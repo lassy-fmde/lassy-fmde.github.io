@@ -1,0 +1,140 @@
+url: /example/fsm2dotjs
+functionsLanguage: javascript
+outputFormat: graphviz-dot
+metamodel: |
+    Root:
+      cont:
+        - FSM
+    FSM:
+      name:
+        - string
+      cont:
+        - State
+        - Transition
+      finalState:
+        - State
+      initialState:
+        - State
+    Transition:
+      input:
+        - int
+      source:
+        - State
+      target:
+        - State
+    State:
+      name:
+        - string
+inputs:
+    - name: example1
+      input: |
+        #OYAML2.1 format
+        - FSM:
+          # this FSM accepts all bit strings with an odd number of 1's
+          - name: Test FSM
+          - initialState >: s0
+          - finalState >: s1
+          - State s0:
+            - name: s0
+          - State s1:
+            - name: s1
+          - State s2:
+            - name: s2
+          - Transition:
+            - input: 1
+            - source >: s0
+            - target >: s1
+          - Transition:
+            - input: 1
+            - source >: s1
+            - target >: s0
+          - Transition:
+            - input: 0
+            - source >: s0
+            - target >: s0
+          - Transition:
+            - input: 0
+            - source >: s1
+            - target >: s1
+transformation: |
+    # Dot-file content
+    FSM.dot:
+      header, states, transitions, footer
+
+    # List of states
+    FSM.states:
+      cont -> State.name
+
+    # List of transitions
+    FSM.transitions:
+      cont -> Transition.rep
+
+    # Representation of a transition
+    Transition.rep:
+      source -> State.name, target -> State.name
+
+    FSM.header:
+    FSM.footer:
+functions: |
+    module.exports = {
+      /**
+       * FSM.dot
+       * Dot-file content
+       * @param header The "header" of this FSM
+       * @param states The "states" of this FSM
+       * @param transitions The "transitions" of this FSM
+       * @param footer The "footer" of this FSM
+       */
+      FSM_dot: function(header, states, transitions, footer) {
+        return header + states + transitions + footer;
+      },
+
+      /**
+       * FSM.states
+       * List of states
+       * @param cont_State_name {Array} The sequence of "name" values of State
+       *                                objects contained in this FSM
+       */
+      FSM_states: function(cont_State_name) {
+        return cont_State_name.join('\n  ') + '\n';
+      },
+
+      /**
+       * FSM.transitions
+       * List of transitions
+       * @param cont_Transition_rep {Array} The sequence of "rep" values of
+       *                                    Transition objects contained in this
+       *                                    FSM
+       */
+      FSM_transitions: function(cont_Transition_rep) {
+        return cont_Transition_rep.join('\n') + '\n';
+      },
+
+      /**
+       * Transition.rep
+       * Representation of a transition
+       * @param source_State_name {Array} The sequence of "name" values of State
+       *                                  objects referred to by attribute
+       *                                  "source" in this Transition
+       * @param target_State_name {Array} The sequence of "name" values of State
+       *                                  objects referred to by attribute
+       *                                  "target" in this Transition
+       */
+      Transition_rep: function(source_State_name, target_State_name) {
+        return `  ${source_State_name[0]}--${target_State_name[0]}`;
+      },
+
+      /**
+       * FSM.header
+       */
+      FSM_header: function() {
+        return 'graph {\n  '
+      },
+
+      /**
+       * FSM.footer
+       */
+      FSM_footer: function() {
+        return '}\n';
+      },
+    };

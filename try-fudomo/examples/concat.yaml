@@ -1,0 +1,42 @@
+url: /example/concat
+functionsLanguage: javascript
+outputFormat: text
+metamodel: |
+    Root:
+      cont:
+        - Person
+    Person:
+      name:
+        - string
+inputs:
+    - name: example1
+      input: |
+        - Person:
+          - name: Paul
+        - Person:
+          - name: Pierre
+        - Person:
+          - name: Jim
+    - name: example2
+      input: |
+        - Person:
+          - name: Paul2
+        - Person:
+          - name: Pierre2
+        - Person:
+          - name: Jim2
+transformation: |
+    #compute comma-separated list of names
+    Root.test:
+    	cont -> Person.name
+functions: |
+    module.exports = {
+      /**
+       * Root.test:
+       * @param cont_Person_name {Array} The sequence of "name" values of Person objects contained in this Root
+       */
+      Root_test: function(cont_Person_name) {
+        return cont_Person_name.join(', ');
+      },
+
+    };

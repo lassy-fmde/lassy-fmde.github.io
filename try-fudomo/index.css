@@ -1,0 +1,90 @@
+/*
+Colors based on http://coolors.co/b6d094-e1aa7d-be8a60-6a2e35-2e2836 and
+https://refactoringui.com/previews/building-your-color-palette/
+*/
+
+:root {
+    --theme-primary-100: hsla(216, 47%, 90%, 1);
+    --theme-primary-200: hsla(216, 47%, 80%, 1);
+    --theme-primary-300: hsla(216, 47%, 70%, 1);
+    --theme-primary-400: hsla(216, 47%, 60%, 1);
+    --theme-primary-500: hsla(216, 47%, 50%, 1);
+    --theme-primary-600: hsla(216, 47%, 40%, 1);
+    --theme-primary-700: hsla(216, 47%, 30%, 1);
+    --theme-primary-800: hsla(216, 47%, 20%, 1);
+    --theme-primary-900: hsla(216, 47%, 10%, 1);
+
+    --theme-neutral-100: hsla(0, 0%, 90%, 1);
+    --theme-neutral-200: hsla(0, 0%, 80%, 1);
+    --theme-neutral-300: hsla(0, 0%, 70%, 1);
+    --theme-neutral-400: hsla(0, 0%, 60%, 1);
+    --theme-neutral-500: hsla(0, 0%, 50%, 1);
+    --theme-neutral-600: hsla(0, 0%, 40%, 1);
+    --theme-neutral-700: hsla(0, 0%, 30%, 1);
+    --theme-neutral-800: hsla(0, 0%, 20%, 1);
+    --theme-neutral-900: hsla(0, 0%, 10%, 1);
+
+    --theme-accent1-100: hsla(53, 83%, 90%, 1);
+    --theme-accent1-200: hsla(53, 83%, 80%, 1);
+    --theme-accent1-300: hsla(53, 83%, 70%, 1);
+    --theme-accent1-400: hsla(53, 83%, 60%, 1);
+    --theme-accent1-500: hsla(53, 83%, 50%, 1);
+    --theme-accent1-600: hsla(53, 83%, 40%, 1);
+    --theme-accent1-700: hsla(53, 83%, 30%, 1);
+    --theme-accent1-800: hsla(53, 83%, 20%, 1);
+    --theme-accent1-900: hsla(53, 83%, 10%, 1);
+
+    --theme-accent2-100: hsla(167, 44%, 90%, 1);
+    --theme-accent2-200: hsla(167, 44%, 80%, 1);
+    --theme-accent2-300: hsla(167, 44%, 70%, 1);
+    --theme-accent2-400: hsla(167, 44%, 60%, 1);
+    --theme-accent2-500: hsla(167, 44%, 50%, 1);
+    --theme-accent2-600: hsla(167, 44%, 40%, 1);
+    --theme-accent2-700: hsla(167, 44%, 30%, 1);
+    --theme-accent2-800: hsla(167, 44%, 20%, 1);
+    --theme-accent2-900: hsla(167, 44%, 10%, 1);
+
+    --theme-accent-positive-100: hsla(119, 83%, 90%, 1);
+    --theme-accent-positive-200: hsla(119, 83%, 80%, 1);
+    --theme-accent-positive-300: hsla(119, 83%, 70%, 1);
+    --theme-accent-positive-400: hsla(119, 83%, 60%, 1);
+    --theme-accent-positive-500: hsla(119, 83%, 50%, 1);
+    --theme-accent-positive-600: hsla(119, 83%, 40%, 1);
+    --theme-accent-positive-700: hsla(119, 83%, 30%, 1);
+    --theme-accent-positive-800: hsla(119, 83%, 20%, 1);
+    --theme-accent-positive-900: hsla(119, 83%, 10%, 1);
+
+    --theme-accent-negative-100: hsla(360, 83%, 90%, 1);
+    --theme-accent-negative-200: hsla(360, 83%, 80%, 1);
+    --theme-accent-negative-300: hsla(360, 83%, 70%, 1);
+    --theme-accent-negative-400: hsla(360, 83%, 60%, 1);
+    --theme-accent-negative-500: hsla(360, 83%, 50%, 1);
+    --theme-accent-negative-600: hsla(360, 83%, 40%, 1);
+    --theme-accent-negative-700: hsla(360, 83%, 30%, 1);
+    --theme-accent-negative-800: hsla(360, 83%, 20%, 1);
+    --theme-accent-negative-900: hsla(360, 83%, 10%, 1);
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+html {
+  overflow: hidden;
+}
+
+#root {
+  box-sizing: border-box;
+}

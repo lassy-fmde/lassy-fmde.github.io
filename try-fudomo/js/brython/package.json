@@ -1,0 +1,50 @@
+{
+  "_from": "brython",
+  "_id": "brython@3.8.8",
+  "_inBundle": false,
+  "_integrity": "sha512-05g0D/U784i6nESrp5OoktGiJwsndyD1N+0L0O/z5n1HYqbTN//edBr9cU73OtRI9gWDqZMjyoltvlqPXlCxXw==",
+  "_location": "/brython",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "brython",
+    "name": "brython",
+    "escapedName": "brython",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/brython/-/brython-3.8.8.tgz",
+  "_shasum": "5ed4ad814925dea685315107f5c2e8b561c1c92f",
+  "_spec": "brython",
+  "_where": "/home/chris/wfh/editor-test",
+  "author": {
+    "name": "Pierre Quentel"
+  },
+  "bugs": {
+    "url": "https://github.com/brython-dev/brython/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Python 3 in the browser",
+  "homepage": "https://github.com/brython-dev/brython#readme",
+  "keywords": [
+    "Python"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "brython.js",
+  "name": "brython",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brython-dev/brython.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "3.8.8"
+}
