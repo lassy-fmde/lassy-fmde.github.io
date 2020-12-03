@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jnlp spec="1.0+" codebase="http://lightning.gforge.uni.lu/resources/" href="Lightning.jnlp">
+<jnlp spec="1.0+" codebase="https://lassy-fmde.github.io/lightning/resources/" href="Lightning.jnlp">
     <information>
         <title>Lightning Workbench</title>
         <vendor>University of Luxembourg</vendor>
-        <homepage href="http://lightning.gforge.uni.lu/" />
+        <homepage href="https://lassy-fmde.github.io/lightning/" />
         <description>Lightning Workbench</description>
     </information>
     <security>
