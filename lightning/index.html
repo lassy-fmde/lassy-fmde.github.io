@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Lightning</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="description" content="This page contains information about Lightning, a Lightweight Modeling Language Workbench">
+    <meta name="author" content="Loïc Gammaitoni">
+    <meta name="keyword" content="lightning, lightweight, modelling language, language workbench , language definition, concrete syntax, abstract syntax, vizualisation, semantics, model, Alloy, F-Alloy, tool, formal, model transformation, verification, analysis, operational semantics, language ">
+    <meta property="og:image" content="//lightning.gforge.uni.lu/img/Lightning.svg" />
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js'
+            , 'ga');
+
+        ga('create', 'UA-42356040-1', 'uni.lu');
+        ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- NAVBAR ================================================== -->
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="index.html">Lightning</a>
+                <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <!--<li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation<b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+	            <li><a tabindex="-1" href="Lightning_gui.html">Lightning GUI Presentation</a></li>
+		        <li><a tabindex="-1" href="getting-started.html">Getting Started</a></li>
+	            <li><a tabindex="-1" href="examples.html">Examples</a></li>
+		      </ul>
+	        </li>-->
+                        <li><a class="active" href="install.html">Install</a></li>
+                        <li><a href="documentation/index.html">Documentation</a></li>
+                        <li><a href="examples.html">Examples</a></li>
+                        <li><a href="media.html">Media</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <!--
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li> -->
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!-- /.navbar-inner -->
+        </div>
+
+
+        <center>
+            <img style="width:100%" src="img/Lightning.png" />
+        </center>
+
+        <div class="row" style="height:750px; margin-top:25px">
+            <div class="span6" style="height:600px">
+                <div class="hero-unit" style="height:100%">
+                    <H1> What is Lightning ? </H1>
+                    <br/>
+                    <p>
+                        The Lightning Tool is a language workbench distributed as an Eclipse plugin. It can be used to:
+                        <ul>
+                            <li> Create modelling languages from scratch, following an agile design process <a class="btn btn-small" href="http://orbilu.uni.lu/handle/10993/23477">read more</a></li>
+                            <li> Provide intuitive domain specific visualisations to existing models <a class="btn btn-small" href="http://orbilu.uni.lu/handle/10993/16891">read more</a></li>
+                            <li> Seamlessly execute language specifications for both verification and validation purposes <a class="btn btn-small" href="http://orbilu.uni.lu/handle/10993/20100">read more</a></li>
+                            <li> Specifying analysable and efficiently computable model transformations <a class="btn btn-small" href="http://orbilu.uni.lu/handle/10993/23476">read more</a> </li>
+                        </ul>
+                    </p>
+
+                </div>
+            </div>
+            <div class="span6" style="height:600px">
+                <div class="hero-unit" style="height:100%">
+                    <H1>Underlying Technology</H1>
+                    <br/>
+                    <p>
+                        The Lightning tool relies on :
+                        <ul>
+                            <li> The lightweight formal language <a href="http://alloy.mit.edu">Alloy</a> to express, in a model, concepts, inter-concept relations, and constraints used in languages definitions. It uses the associated Alloy Analyser, a SAT-solver based tool, to exhaustively generate instances conforming to the given specifications. </li>
+                            <li> The <a href="http://orbilu.uni.lu/handle/10993/23476">F-Alloy</a> transformation language to express transformations between two Alloy models. The F-Alloy language features a subset of the Alloy language syntax that can be computed in polynomial time rather than just analysed. This particularity allows drasitcal improvement in computation's time complexity hence improving user experience in the use of Alloy to specify model transformations.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height:660px">
+
+            <div class="span6" style="height:100%">
+                <div class="hero-unit" style="height:100%">
+                    <H1>Language Definitions in Lightning</H1>
+                    <br/>
+                    <p>
+                        Languages defined using Lightning consist of:
+                        <ul>
+                            <li> An abstract syntax model defining the set of valid language models (instances of the language). </li>
+                            <li> A concrete syntax definition specifying how language models should be visualised. It is expressed as a transformation from the abstract syntax model to a built-in visual language model (in which the set of shapes and layout Lightning can render are defined).</li>
+                            <li> An operational semantics definition consisting of :
+                                <ul>
+                                    <li> a semantic domain model defining, given the abstract syntax model, what a state of the operational semantics corresponds to. </li>
+                                    <li> a semantics step transformation defining how to go from state to state.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="span6" style="height:100%">
+                <center>
+                    <a class="twitter-timeline" href="https://twitter.com/LightningWorkB" data-widget-id="430691113825861632" height="777">>Tweets by @LightningWorkB</a>
+                </center>
+                <script>
+                    ! function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0]
+                            , p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + "://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, "script", "twitter-wjs");
+                </script>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="marketing" style="margin-top:200px">
+            <div class="row">
+                <div class="span6">
+                    <center>
+                        <img class="img-circle" src="img/download.png">
+                        <h2>Install Lightning</h2>
+                        <p>Instructions on how to get the latest Lightning version running can be found here.</p>
+                        <p>
+                            <a class="btn btn-large btn-primary" href="install.html" target="blank">Proceed to Installation Page >></a>
+                        </p>
+                    </center>
+                </div>
+                <!--<div class="span4">
+          <img class="img" src="img/started.png">
+          <h2>Getting Started</h2>
+          <p>If you have difficulties to understand the basics, you can find a complete documentation here</p>
+          <p>
+            <a class="btn btn-large btn-primary" href="getting-started.html" target="_blank">Learn more &raquo;</a>
+          </p>
+        </div>-->
+                <div class="span6">
+                    <center>
+                        <img class="img-circle" src="img/community.png">
+                        <h2>Join the Community</h2>
+                        <p>Can't find a solution to a specific problems ?
+                            <br/> Willing to contribute to our growing community ?</p>
+                        <p>
+                            <a class="btn btn-large btn-primary " href="http://stackoverflow.com/questions/tagged/Lightning-Workbench" target="_blank" onclick="ga('send', 'event', 'Resource', 'Visit', this.href);">Join us on StackOverflow &raquo;</a>
+                        </p>
+                    </center>
+                </div>
+            </div>
+            <!--
+      <div class="row">
+        <div class="span4">
+          <img class="img-circle" src="img/download.png">
+          <h2>Run</h2>
+          <p>You can run Lightning directly from the website.</p>
+          <p><a class="btn btn-large btn-primary" href="resources/Lightning.jnlp" onclick="ga('send', 'event', 'Resource', 'Download', this.href);" target="blank" >Run Lightning</a></p>
+        </div>
+      </div>
+      -->
+
+            <!-- featurettes
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="../assets/img/examples/browser-icon-chrome.png">
+        <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-left" src="../assets/img/examples/browser-icon-firefox.png">
+        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="../assets/img/examples/browser-icon-safari.png">
+        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.marketing -->
+
+    <!-- FOOTER -->
+    <footer class="text-center" style="margin-top:50px">
+        <img width=100px src="img/uniLogo.jpg" /> <img width=200px src="img/lassy.png" />
+        <br />
+        <small>&copy; 2013 University of Luxembourg</small>
+    </footer>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lightning ~ Examples</title>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<meta name="description" content="This page contains information about Lightning, a Lightweight Modeling Language Workbench">
+<meta name="author" content="Loïc Gammaitoni">
+
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
+			'ga');
+
+	ga('create', 'UA-42356040-1', 'uni.lu');
+	ga('send', 'pageview');
+</script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <!-- NAVBAR ================================================== -->
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+
+        <a class="brand" href="index.html">Lightning</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+	    <li><a href="install.html">Install</a></li>
+	    <li><a href="documentation/index.html">Documentation</a></li>
+	    <li><a class="active" href="examples.html">Examples</a></li>
+	    <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <!--
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li> -->
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+      <!-- /.navbar-inner -->
+    </div>
+    <!-- /.navbar -->
+
+<style>
+td{
+border:2px solid gray;
+}
+</style>
+    <H1>Examples</H1>
+    <H2>Languages</H2>
+<table style="border-style:solid;">
+<!-- TITLES -->
+			<tr>
+		     <td>  <b> Name </b>  </td>
+		     <td>  <b> Description </b>  </td>
+		     <td>  <b> Preview </b>  </td>
+			</tr>
+	  
+<!--ENTRY 0 -->
+			<tr>
+		     <td>   <a href="examples/FSM.zip">FSM </td>
+		     <td>   This example contains the complete definition of a Finite State Machine language </td>
+		     <td>  <center> <img width=200px src="examples/img/fsm.png" /> </center></td>
+
+			</tr>	
+<!--ENTRY 1 -->
+
+			<tr>
+		     <td>   <a href="examples/SBP.zip">SBP </td>
+		     <td>   This example contains the definition of a Structure Business Process language (a kind of Control Flow Diagram)</td>
+
+		     <td>   <img width=200px src="examples/img/CFD.png" /> </td>
+
+			</tr>
+
+<!--ENTRY 2 -->
+			<tr>
+		     <td>   <a href="examples/turing.zip">Turing Machine </td>
+		     <td>   This example contains the complete definition of a turing machine language </td>
+		     <td>  <center> <img width=200px src="examples/img/turing.png" /> </center></td>
+
+			</tr>
+
+<!--ENTRY 3 -->
+			<tr>
+		     <td>   <a href="examples/petrinet.zip">PetriNet </td>
+		     <td>   This example contains the complete definition of a PetriNet language </td>
+		     <td>  <center> <img width=200px src="examples/img/petrinet.png" /> </center></td>
+
+			</tr>
+		
+</table>
+
+    <H2>Exogenous Transformations</H2>
+<table style="border-style:solid;">
+<!-- TITLES -->
+			<tr>
+		     <td>  <b> Name </b>  </td>
+		     <td>  <b> Description </b>  </td>
+		     <td>  <b> Preview </b>  </td>
+			</tr>
+	  	
+<!--ENTRY 1 -->
+			<tr>
+		     <td>   <a href="examples/CD2RDBMS.zip">CD2RDBMS </td>
+		     <td>   This example contains the definition of two languages : Class Diagram (CD) and Relational Database Management System (RDBMS).
+It also feature a transformation from CD to RDBMS.  </td>
+		     <td>  <center> <img width=200px src="examples/img/CD2RDBMS.png" /> </center></td>
+
+			</tr>
+<!--ENTRY 2 -->
+			<tr>
+		     <td>   <a href="examples/SBP2Pnet.zip">SBP2Pnet </td>
+		     <td>   This example contains the definition of two languages : Structured Business Process (SBP) and PetriNet (Pnet).
+It also feature a transformation from SBP to its semantically equivalent Pnet.  </td>
+		     <td>  <center> <img width=200px src="examples/img/sbp2Pnet.png" /> </center></td>
+
+			</tr>
+		
+
+		
+</table>
+
+    <H2>Endogenous Transformations</H2>
+
+<table style="border-style:solid;">
+<!-- TITLES -->
+			<tr>
+		     <td>  <b> Name </b>  </td>
+		     <td>  <b> Description </b>  </td>
+		     <td>  <b> Preview </b>  </td>
+			</tr>
+	  	
+<!--ENTRY 1 -->
+			<tr>
+		     <td>   <a href="examples/repotting.zip">Repotting Geraniums </td>
+		     <td>  An implementation of the "repotting the geraniums case study" introduced by Arend Rensink and Jan-Hendrik Kuperus in <a href="http://wwwhome.cs.utwente.nl/~rensink/papers/gtvmt2009.pdf"> this paper</a> </td>
+		     <td>  <center> <img width=200px src="examples/img/repotting.png" /> </center></td>
+
+			</tr>
+		
+	  	
+<!--ENTRY 2 -->
+			<tr>
+		     <td>   <a href="examples/cdrefinements.zip">Class Diagram Refinements </td>
+		     <td>  The implementation of a class diagram refinement consisting of replacing association classes by regular classes and by removing the abstract modifier of non-inherited abstract classes.  </td>
+		     <td>  <center> <img width=200px src="examples/img/cdrefinements.png" /> </center></td>
+
+			</tr>
+
+<!--ENTRY 5 -->
+			<tr>
+		     <td>   <a href="examples/Kleppe.zip">Kleppe's OO language semantics</td>
+		     <td>  The implementation of the semantics of the object oriented language Kleppe introduce in her book, software language engineering in chapter 9.  </td>
+		     <td>  <center> <img width=200px src="examples/img/Kleppe.png" /> </center></td>
+
+			</tr>
+		
+		
+</table>
+
+  <!-- FOOTER -->
+  <footer class="text-center" style="margin-top:50px">
+       <img width=100px src="img/uniLogo.jpg" />       <img width=200px src="img/lassy.png" /><br />
+       <small>&copy; 2013 University of Luxembourg</small>		
+  </footer>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+

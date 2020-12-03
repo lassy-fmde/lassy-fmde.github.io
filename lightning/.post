@@ -1,0 +1,13 @@
+</div>
+  <!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="text-center" style="margin-top:50px">
+       <img width=100px src="/img/uniLogo.jpg" />       <img width=200px src="/img/lassy.png" /><br />
+       <small>&copy; 2013 University of Luxembourg</small>		
+  </footer>
+  <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

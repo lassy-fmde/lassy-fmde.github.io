@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://lightning.gforge.uni.lu/resources/" href="Lightning.jnlp">
+    <information>
+        <title>Lightning Workbench</title>
+        <vendor>University of Luxembourg</vendor>
+        <homepage href="http://lightning.gforge.uni.lu/" />
+        <description>Lightning Workbench</description>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <resources>
+        <j2se version="1.6+" />
+        <jar href="Lightning.jar" />
+    </resources>
+    <application-desc main-class="lu.uni.lightning.launcher.Main" />
+</jnlp>

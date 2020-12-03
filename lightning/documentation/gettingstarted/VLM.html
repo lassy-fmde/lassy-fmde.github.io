@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lightning ~ Documentation</title>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<meta name="description" content="This page contains information about Lightning, a Lightweight Modeling Language Workbench">
+<meta name="author" content="Loïc Gammaitoni">
+
+<!-- Le styles -->
+<link href="/css/bootstrap.css" rel="stylesheet">
+<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+
+<script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+			(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script', '//www.google-analytics.com/analytics.js',
+			'ga');
+
+	ga('create', 'UA-42356040-1', 'uni.lu');
+	ga('send', 'pageview');
+</script>
+</head>
+
+<body>
+
+
+  <div class="container">
+    <!-- NAVBAR ================================================== -->
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/index.html">Lightning</a>
+        <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <!--<li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Documentation<b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+	            <li><a tabindex="-1" href="Lightning_gui.html">Lightning GUI Presentation</a></li>
+		        <li><a tabindex="-1" href="getting-started.html">Getting Started</a></li>
+	            <li><a tabindex="-1" href="examples.html">Examples</a></li>
+		      </ul>
+	        </li>-->
+ 	    <li><a href="/install.html">Install</a></li>
+	    <li><a class="active" href="/documentation/index.html">Documentation</a></li>
+	   <li><a href="/examples.html">Examples</a></li>
+	    <li><a href="/media.html">Media</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <!--
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li> -->
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+      <!-- /.navbar-inner -->
+    </div>
+    <!-- /.navbar --> <h1>Lightning VLM </h1>
+	The Lightning VLM (present by default in any newly created language : /Concrete Syntax/LightningVLM.als) is a generic definition of a visual language.
+	
+	It is composed of a set of visual elements:
+	<ul>
+		<li>
+			<b>Symbols</b> are visual elements that can contain other visual elements. They are of two different types: 
+				<ul>
+					<li>
+						<b>Shape</b> are basic geometric shapes. Amongst them are the most traditional : RECTANGLE, TRIANGLE, etc.. and the less traditional : ACTOR, etc.. INVISIBLE_CONTAINER is a special shape in the sense that it will not be visible (You can imagine it as a invisible rectangle that is used to enforce the elements it contains to stay be grouped together).
+					<li>
+					<li>
+						<b>IMAGE</b> is meant to be an extension point to the visual language. Indeed, you can introduce to the set of available symbols any image by simply providing the corresponding URL : (local or Internet)
+					<li>
+				</ul>
+		</li>
+		<li><b>CONNECTOR</b> are simple arrows meant to easily represent relations between shapes. CONNECTORs have a visual element as source and target. Thus a CONNECTOR can as well be connected to another CONNECTOR, thus allowing the rendering of "ternary" relations.
+		<li><b>TEXT</b> are used to insert styled text to your graphical representation. They can be used to label Symbols (in that case they should be part of the Symbol.composedOf relation).
+		In order to specify the value of the text, you should use the textLabel field that is a sequence of universe.
+		The sequence allows to order the components of your label in case it is composed of multiple artifacts, and this sequence is typed as universe in order to let you assign any signature elements to it.
+			<ul>
+				<li>
+					If you assign a String to the textLabel, (eg: t.textLabel[0]="test") then the String ("test") will be displayed.
+				</li> 
+				<li>
+					If you assign an element of a given Signature to the textLabel (eg :t.textLabel[0]=n  // with n in Test) then the label of this n element will be displayed. (eg: Test_0) 
+				</li>
+				
+				<li>
+					Note that Assigning multiple elements to a text Label do not induce spaces. As an example :<br />
+					t.textLabel[0]="test"<br />
+					t.textLabel[1]=n<br />
+					will be rendered : testTest_0 <br />
+					
+					In order to insert a space, 2 options are valid 
+					<ul>
+						<li>
+						Adding a space at the end of the first string:<br />
+						t.textLabel[0]="test "<br />
+						t.textLabel[1]=n<br />
+						</li>
+						<li>
+						Adding an extra space between the two indexes:<br />
+						t.textLabel[0]="test"<br />
+						t.textLabel[1]=" "<br />
+						t.textLabel[2]=n<br />
+						</li>
+					</ul>					
+				</li>  
+			</ul>
+		</li>
+	</ul>
+	
+	It also contains information about Layouts (for now we support basic layout such as Horizontal and Vertical layout).
+	Those Layout are meant to be applied on elements that composes symbols.
+	
+	And it contains some Color that are meant to be properties of any visual elements.
+	
+	An overview of this Visual Language is given in the following model :
+	
+	<img src="VLM.png" />
+	
+	Note that all the elements written fully in uppercase are non-abstract elements whose atoms are interpreted by the tool. You should thus use directly those signatures in your definition of a concrete syntax when you write the mappings of your <a href="transformation.html">transformation</a>. </div>
+  <!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="text-center" style="margin-top:50px">
+       <img width=100px src="/img/uniLogo.jpg" />       <img width=200px src="/img/lassy.png" /><br />
+       <small>&copy; 2013 University of Luxembourg</small>		
+  </footer>
+  <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>
