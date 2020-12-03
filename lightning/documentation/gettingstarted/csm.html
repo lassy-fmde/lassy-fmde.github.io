@@ -8,9 +8,9 @@
 <meta name="author" content="Loïc Gammaitoni">
 
 <!-- Le styles -->
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/css/style.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
 
 <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
@@ -55,11 +55,11 @@
 	            <li><a tabindex="-1" href="examples.html">Examples</a></li>
 		      </ul>
 	        </li>-->
- 	    <li><a href="/install.html">Install</a></li>
-	    <li><a class="active" href="/documentation/index.html">Documentation</a></li>
-	   <li><a href="/examples.html">Examples</a></li>
-	    <li><a href="/media.html">Media</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+ 	    <li><a href="../../install.html">Install</a></li>
+	    <li><a class="active" href="../../documentation/index.html">Documentation</a></li>
+	   <li><a href="../../examples.html">Examples</a></li>
+	    <li><a href="../../media.html">Media</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
             <!--
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li> -->
@@ -79,27 +79,27 @@
 	In Lightning, a concrete syntax definition is composed of :
 		<ul>
 			<li>
-				<b>The LightningVLM.als model:</b> This model defines the set of atoms and well formedness rules to be used in our definition of the concrete syntax. Basically, it is a simple specification of a generic <a href="VLM.html">visual language</a>.	
+				<b>The LightningVLM.als model:</b> This model defines the set of atoms and well formedness rules to be used in our definition of the concrete syntax. Basically, it is a simple specification of a generic <a href="VLM.html">visual language</a>.
 			</li>
-			
+
 			<li>
 				<b>At least one Functional Alloy Module: </b> Functional Alloy modules are meant to specify interpretable model <a href="transformation.html">transformations</a> in Alloy.
-				In the context of a concrete syntax definition, functional Alloy modules are used to define the relation between the <a href=asm.html">abstract syntax</a> (the world of "ideas") and the <a href="VLM.html">visual language model</a> previously described. 
+				In the context of a concrete syntax definition, functional Alloy modules are used to define the relation between the <a href=asm.html">abstract syntax</a> (the world of "ideas") and the <a href="VLM.html">visual language model</a> previously described.
 				As an idea generally have several representation (eg. the idea of "Happiness"  , can be expressed using different synonyms, in different language and in different format : (written/ spoken / ...)), it is only natural to assume that for a given abstract syntax model, several graphical representations might be appreciated.
-				In that respect, the number of functional alloy modules that can be specified per language is not limited. 
+				In that respect, the number of functional alloy modules that can be specified per language is not limited.
 			</li>
 		</ul>
 	</li>
 </ul>
 
-	
+
 <h3> How Should I proceed ?</h3>
 As the LightningVLM.als is given by default, you do not need to bother about the definition of the language constructs.
 Your only task is to define a mapping between elements of the abstract syntax and those language constructs.
 
 To do so, simply create a new functional Alloy module.
 Functional Alloy modules follow a really rigorous and specific syntax in order to be interpretatble, you should thus refer to <a href="fals.html"> this page </a> in order to learn how to write functional alloy modules.
- 
+
  <h3> And then ?</h3>
 
 Well, once the definition of a transformation is done, you can apply it to any instance currently viewed in the viewer by selecting it in the first check box (see more about <a href="verification.html"> verification </a> )
@@ -110,10 +110,10 @@ Note that this visualization can be performed on saved instances as well, and it
 
   <!-- FOOTER -->
   <footer class="text-center" style="margin-top:50px">
-       <img width=100px src="/img/uniLogo.jpg" />       <img width=200px src="/img/lassy.png" /><br />
-       <small>&copy; 2013 University of Luxembourg</small>		
+       <img width=100px src="../../img/uniLogo.jpg" />       <img width=200px src="../../img/lassy.png" /><br />
+       <small>&copy; 2013 University of Luxembourg</small>
   </footer>
-  <script src="/js/bootstrap.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 </html>

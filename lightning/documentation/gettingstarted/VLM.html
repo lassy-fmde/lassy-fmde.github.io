@@ -8,9 +8,9 @@
 <meta name="author" content="Loïc Gammaitoni">
 
 <!-- Le styles -->
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="/css/style.css" rel="stylesheet">
+<link href="../../css/bootstrap.css" rel="stylesheet">
+<link href="../../css/bootstrap-responsive.css" rel="stylesheet">
+<link href="../../css/style.css" rel="stylesheet">
 
 <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
@@ -55,11 +55,11 @@
 	            <li><a tabindex="-1" href="examples.html">Examples</a></li>
 		      </ul>
 	        </li>-->
- 	    <li><a href="/install.html">Install</a></li>
-	    <li><a class="active" href="/documentation/index.html">Documentation</a></li>
-	   <li><a href="/examples.html">Examples</a></li>
-	    <li><a href="/media.html">Media</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+ 	    <li><a href="../../install.html">Install</a></li>
+	    <li><a class="active" href="../../documentation/index.html">Documentation</a></li>
+	   <li><a href="../../examples.html">Examples</a></li>
+	    <li><a href="../../media.html">Media</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
             <!--
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li> -->
@@ -71,11 +71,11 @@
     </div>
     <!-- /.navbar --> <h1>Lightning VLM </h1>
 	The Lightning VLM (present by default in any newly created language : /Concrete Syntax/LightningVLM.als) is a generic definition of a visual language.
-	
+
 	It is composed of a set of visual elements:
 	<ul>
 		<li>
-			<b>Symbols</b> are visual elements that can contain other visual elements. They are of two different types: 
+			<b>Symbols</b> are visual elements that can contain other visual elements. They are of two different types:
 				<ul>
 					<li>
 						<b>Shape</b> are basic geometric shapes. Amongst them are the most traditional : RECTANGLE, TRIANGLE, etc.. and the less traditional : ACTOR, etc.. INVISIBLE_CONTAINER is a special shape in the sense that it will not be visible (You can imagine it as a invisible rectangle that is used to enforce the elements it contains to stay be grouped together).
@@ -92,18 +92,18 @@
 			<ul>
 				<li>
 					If you assign a String to the textLabel, (eg: t.textLabel[0]="test") then the String ("test") will be displayed.
-				</li> 
-				<li>
-					If you assign an element of a given Signature to the textLabel (eg :t.textLabel[0]=n  // with n in Test) then the label of this n element will be displayed. (eg: Test_0) 
 				</li>
-				
+				<li>
+					If you assign an element of a given Signature to the textLabel (eg :t.textLabel[0]=n  // with n in Test) then the label of this n element will be displayed. (eg: Test_0)
+				</li>
+
 				<li>
 					Note that Assigning multiple elements to a text Label do not induce spaces. As an example :<br />
 					t.textLabel[0]="test"<br />
 					t.textLabel[1]=n<br />
 					will be rendered : testTest_0 <br />
-					
-					In order to insert a space, 2 options are valid 
+
+					In order to insert a space, 2 options are valid
 					<ul>
 						<li>
 						Adding a space at the end of the first string:<br />
@@ -116,30 +116,30 @@
 						t.textLabel[1]=" "<br />
 						t.textLabel[2]=n<br />
 						</li>
-					</ul>					
-				</li>  
+					</ul>
+				</li>
 			</ul>
 		</li>
 	</ul>
-	
+
 	It also contains information about Layouts (for now we support basic layout such as Horizontal and Vertical layout).
 	Those Layout are meant to be applied on elements that composes symbols.
-	
+
 	And it contains some Color that are meant to be properties of any visual elements.
-	
+
 	An overview of this Visual Language is given in the following model :
-	
+
 	<img src="VLM.png" />
-	
+
 	Note that all the elements written fully in uppercase are non-abstract elements whose atoms are interpreted by the tool. You should thus use directly those signatures in your definition of a concrete syntax when you write the mappings of your <a href="transformation.html">transformation</a>. </div>
   <!-- /.container -->
 
   <!-- FOOTER -->
   <footer class="text-center" style="margin-top:50px">
-       <img width=100px src="/img/uniLogo.jpg" />       <img width=200px src="/img/lassy.png" /><br />
-       <small>&copy; 2013 University of Luxembourg</small>		
+       <img width=100px src="../../img/uniLogo.jpg" />       <img width=200px src="../../img/lassy.png" /><br />
+       <small>&copy; 2013 University of Luxembourg</small>
   </footer>
-  <script src="/js/bootstrap.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
 
 </body>
 </html>
