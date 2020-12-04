@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="description" content="MaRCo FNR CORE project, Managing Regulatory Compliance: a Business-Centred Approach.">
+<meta name="keywords" content="MaRCo, FNR, CORE, business process, regulation, compliance, norm, formal, visual, automated, tool, complexity"> 
+<meta name="author" content="Qin Ma"> 
+<link rel="stylesheet" href="reset.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="default.css" media="screen"><title>MaRCo</title></head><body>
+
+  <div class="container">
+    
+    <div class="main">
+
+      
+      <div class="header">
+	
+	<div class="title">
+	  <h1><strong>MaRCo</strong></h1>
+	  <h2><strong>Ma</strong>naging <strong>R</strong>egulatory <strong>Co</strong>mpliance:
+	  a Business-Centred Approach </h2>
+	</div>
+	
+      </div>
+      
+      <div class="content">
+
+	<div class="item">
+	  <h1>MaRCo Tools</h1>
+      <p> The MaRCo Model Editor is an <a href="http://www.eclipse.org">Eclipse</a> plugin that 
+      provides functionality for creating and editing XBPNM and Policy models, as well as transformation
+      capabilities allowing to generate an <a href="http://alloy.mit.edu">Alloy</a> representation of an XBPNM model. 
+      </p>
+      
+      <div style="text-align: center;">
+        <div style="display: inline-block; margin: 20px;">
+          <a href="img/screenshot-policy.png">
+            <img src="img/screenshot-policy-thumb.png"><br>
+            Example of a Policy Diagram
+          </a>
+        </div>
+        <div style="display:inline-block; margin: 20px;">
+          <a href="img/screenshot-xbpnm.png">
+            <img src="img/screenshot-xbpnm-thumb.png"><br>
+            Example of an XBPNM Diagram
+          </a>
+        </div>
+      </div>
+      
+      <h2>Installation</h2>
+      <p>Follow these steps to install the MaRCo model editor:</p>
+      <ul>
+        <li>Install either Eclipse <a href="http://www.eclipse.org/downloads/packages/release/indigo/sr2">3.7</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-standard-43/keplerr">4.3</a>.</li>
+        <li>Launch Eclipse and select <i><u>Help&rarr;Install New Software...</u></i> from the menu.</li>
+        <li>Enter the following Update Site address into the "Work with" text box and press Enter:<br>
+        <a href="http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/">http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/</a>
+        (this adds an update site that will be needed for the retrieval of dependencies of the tool).
+        <li>Then enter the following Update Site address into the "Work with" text box and press Enter:<br>
+        <a href="http://marco.gforge.uni.lu/update/marco-core">http://marco.gforge.uni.lu/update/marco-core</a>
+        </li>
+        <li>In the "MaRCo Tool" category, check the box next to the "MaRCo Model Editor".</li>
+        <li>Click <i><u>Next</u></i>, accept the license and restart Eclipse when asked to.</li>
+      </ul>
+      
+      <h2>Creating new XBPNM or Policy Models</h2>
+      <p>XBPNM or Policy models can be created as follows:</p>
+      <ul>
+      <li>If necessary, create a new Project in Eclipse by choosing <i><u>File&rarr;New&rarr;Project...</u></i> in the menu and selecting
+      "Project" from the "General" category.
+      </li>
+      <li>Right-click the project to open the context menu and select <i><u>New&rarr;Other...</u></i>.</li>
+      <li>From the "MaRCo" category, select either "xbpnm Diagram" or "policy Diagram".</li>
+      <li>Provide a file name for the new model.</li>
+      </ul>
+      
+      <h2>Importing Example Models</h2>
+      <p>The following example models are provided:</p>
+      <ul>
+      <li>The printing policy model, and</li>
+      <li>the printing process model.</li>
+      </ul>
+      <p>To import these example models, <a href="PrintingExample.zip">download the ZIP file</a>, then follow these steps:</p>
+      <ul>
+      <li>Select <u><i>File&rarr;Import...</i></u> from Eclipse's menu and choose "Existing Projects into Workspace" from the "General" category.</li>
+      <li>In the "Import Projects" wizard that appears, mark the "Select archive file" option and choose the downloaded ZIP file.</li>
+      <li>Complete the importing process by confirming all remaining wizard pages.</li>
+      </ul>
+      <p>The example models will appear in a project named "Printing" in your Eclipse workspace.</p>
+
+      <h2>Verifying a MaRCo Model using the Alloy Analyzer</h2>
+      <p>Policy or XBPNM models can be analyzed using the Alloy Analyzer. <a href="http://alloy.mit.edu/alloy/download.html">Download the Alloy Analyzer here</a>.
+      </p>
+      <p>To analyze a model, follow these steps:</p>
+      <ul>
+      <li>In the MaRCo Model Editor, find the ".xbpnm" or ".policy" file of the model.</li>
+      <li>Right-click it to open the context menu and click the <i><u>Transform to Alloy</u></i> menu item.
+          A new file with the extension ".als" is generated.</li>
+      <li>Run the Alloy Analyzer and open the generated ".als" file.</li>
+      <li>Click the <i><u>Execute</u></i> button in the Alloy Analyzer's toolbar.</li>
+      <li>If an instance is found, the predicates of the model are consistent.</li>
+      </ul>
+
+	</div>
+    </div>
+      
+      <div class="sidenav">
+	<ul>
+	  <li><a href="index.html">About MaRCo</a></li>
+	  <li><a href="vision.html">MaRCo Vision</a></li>
+	  <li><a href="approach.html">MaRCo Approach</a></li>
+	  <li><a href="people.html">People</a></li>
+	  <li><a href="publications.html">Publications</a></li>
+	  <li><a href="news.html">News &amp; Events</a></li>
+	  <li id="selected"><a href="tools.html">Tools &amp; Download</a></li>
+	</ul>
+	
+	<p style="text-align: center; padding-top: 1.2em;">
+	  <a href="http://wwwen.uni.lu/"> 
+	    <img src="img/uni-logo.png" border="0" width="180"></a>
+	</p>
+	<p style="text-align: center;">
+	  <a href="http://www.fnr.lu/">
+	  <img src="img/FNR-logo.gif" border="0" width="180"></a>
+	</p>
+	
+      </div>
+      
+      <div class="clearer"><span></span></div>
+      
+    </div>
+    
+    <div class="footer">
+      
+      <span class="left">© 2010-2013 
+	<a href="http://www.fnr.lu/">FNR</a> CORE Project 
+	<a href="index.html">MaRCo</a> at
+	<a href="http://wwwen.uni.lu/">University of Luxembourg</a>.</span>
+      
+      <span class="right"><a href="http://templates.arcsin.se/">
+	  Website template</a> by <a href="http://arcsin.se/">Arcsin</a></span>
+      
+      <div class="clearer"><span></span></div>
+      
+    </div>
+    
+  </div>
+  
+</body></html>

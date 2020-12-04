@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeArtifactRepository version='1.0.0'?>
+<repository name='MaRCo &amp; GMF Update Site'
+    type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>
+  <children size='2'>
+    <child location='marco-core'/>
+    <child location='http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/'/>
+  </children>
+</repository>
