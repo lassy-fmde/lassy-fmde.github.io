@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/try-fudomo/precache-manifest.a615b2077b4d94cfe576829f98d4948e.js"
+  "/try-fudomo/precache-manifest.20767dee07775e6fa92c11f25d80ac74.js"
 );
 
 self.addEventListener('message', (event) => {
