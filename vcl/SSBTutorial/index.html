@@ -1,0 +1,789 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Visual Contract Language - VCB Tutorial of Secure Simple Bank</title>
+	<link rel="stylesheet" href="../css/reset.css" type="text/css">
+	<link rel="stylesheet" href="../css/styles.css" type="text/css">
+	<meta name="keywords" content="vcl, modelling>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-28914227-1']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</head>
+<body id="page">
+
+	<img id="unilogo" src="../images/uni-logo-no-text.png" alt="Uni.lu logo">
+	<img id="lassylogo" src="../images/lassy-logo-no-text.png" alt="Lassy logo">
+	<div id="vcllogosmall">Visual Contract Language</div>
+
+	<div id="navigationbar">
+		<ul id="navigation">
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="../documentation.html">Documentation</a></li>
+			<li><a href="../download.html">Downloads</a></li>
+			<li id="selected"><a href="../tutorials.html">VCB Tutorials</a></li>
+		</ul>
+    </div>
+
+	<div id="content">
+	<div id="sidebar">
+	
+		<h1>Content</h1>
+		<ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#requirements">Requirements of <i>Secure Simple Bank</i></a></li>
+            <li><a href="#model-overview">Overview of VCL model</i></a></li>
+            <li><a href="#starting">Starting VCB</a></li>
+            <li><a href="#vcl-common-types">Package <i>CommonTypes</i></a></li>
+            <li><a href="#vcl-bank">Package <i>Bank</i></a></li>
+            <li><a href="#vcl-authentication">Package <i>Authentication</i></a></li>
+            <li><a href="#vcl-access-control">Package <i>AccessControl</i></a></li>
+            <li><a href="#vcl-authorisation">Package <i>Authorisation</i></a></li>
+            <li><a href="#vcl-roles-and-tasks-bank">Package <i>RolesAndTasksBank</i></a></li>
+            <li><a href="#vcl-sec-for-bank">Package <i>SecForBank</i></a></li>
+            <li><a href="#vcl-transactions-switch">Package <i>TransactionsSwitch</i></a></li>
+            <li><a href="#vcl-BankWithTransSwitch">Package <i>BankWithTransSwitch</i></a></li>
+            <li><a href="#vcl-BankACJI">Package <i>BankACJI</i></a></li>
+            <li><a href="#vcl-BankWithJI">Package <i>BankWithJI</i></a></li>
+            <li><a href="#vcl-SecBank">Package <i>SecBank</i></a></li>
+            <li><a href="#refs">References</a></li>
+		</ul>
+	</div>
+	
+    <div id="text">
+		<h1 id="intro">VCB Tutorial based on the  <i>Secure Simple Bank</i> case study</h1>
+		<p> This is the VCL and VCB tutorial for the <i>Secure Simple Bank</i> case study. 
+		  This tutorial illustrates VCL's package mechanisms to support coarse-grained <i>separation of concerns</i> in VCL and enabling 
+		  the construction of larger packages from smaller ones.
+		  The case study together with the accompanying VCL model is documented in [<a href="#rvcl-ssb-tr">1</a>].
+		   The reader is referred to [<a href="#rvcl-dbc">2</a>, <a href="#rvcl-emmsad10">3</a>] for an introduction to core VCL, 
+		   and to [<a href="#rvcl-techrep">4</a>, <a href="#rvcl-cccms">5</a>]
+		   for an explanation of VCL packages and their composition mechanisms.</p>
+		
+		<p>The complete VCL model of this case study can be obtained from <a href="SecBank.zip">here</a> (you can import the model into eclipse:
+		File->Import->Existing Projects Into Workspace->Select Archive File). The sections that follow present the requirements of <i>secure simple bank</i>,
+		give an overview of the VCL model, and present each package of the VCL model in detail.
+		</p>
+		<h1 id="requirements">Requirements of <i>Secure Simple Bank</i></h1>
+		
+		<p> The <i>secure simple bank</i> case study extends <a href="SBDemo/index.html"><i>simple bank</i></a> with security concerns. 
+		The following table gives the requirements of the <i>secure simple bank</i> case study to be modelled in VCL.<p>
+		
+		<style>
+		table,th,td
+		{
+		border:1px solid black;
+		}
+		</style>
+		
+		<div> 
+		<table>
+		<tbody>
+		<tr>
+  		<td bgcolor="silver"> R1 </td>
+  		<td>The bank system shall keep information of customers and their Bank accounts. 
+  		A customer may hold many accounts; an account is held by one customer only.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R2 </td>
+  		<td>A customer record comprises a customer number, a name, an address and a type (either <i>corporate</i> or <i>personal</i>). 
+  		Each customer has its own unique customer number.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R3 </td>
+  		<td>A Bank account shall have an account number, a balance indicating how much money there is in it, and its type (either <i>current</i> or <i>savings</i>). 
+   		Each account has its own unique account number.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R4 </td>
+  		<td>Accounts of type savings cannot have negative balances.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R5 </td>
+  		<td>Customers of type corporate cannot hold savings accounts.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R6 </td>
+  		<td> Customers may hold saving accounts provided they also hold a current account with the Bank.
+  		</td>
+		</tr>
+		<tr>
+  		<td bgcolor="silver"> R7 </td>
+  		<td> The system shall provide an operation to <i>create customer records</i>. This takes as input the customer's name, address and type; the
+customer number is to be assigned internally by the system. </td>
+  		</tr>
+  		<tr>
+  		<td bgcolor="silver"> R8 </td>
+  		<td> The system shall provide an operation to <i>open bank accounts</i> for some customer. 
+  		This takes as input a customer number and a type of account; the account number is to be assigned internally by the system. 
+  		</td>
+  		</tr>
+  		<tr>
+  		<td bgcolor="silver"> R9 </td>
+  		<td> The system shall provide an operation to <i>deposit money</i> into a bank account. 
+  		This takes as input an account number and an amount to be deposited. </td>
+  		</tr>
+  		<td bgcolor="silver"> R10 </td>
+  		<td> The system shall provide an operation to <i>withdraw money</i> from some bank account. 
+  		This takes as input an account number and an amount to be withdrawn. </td>
+  		</tr>
+  		<tr>
+  		<td bgcolor="silver"> R11 </td>
+  		<td> The system shall provide an operation to <i>view the balance of some bank account</i>. 
+  		This takes as input an account number and outputs the account's balance. </td>
+  		</tr>
+  		<td bgcolor="silver"> R12 </td>
+  		<td> The system shall provide an operation to <i>obtain a list of all accounts of some customer</i>. 
+  		This takes as input a customer number and outputs the set of accounts numbers corresponding to accounts held in the bank by the customer. </td>
+  		</tr>
+  		<td bgcolor="silver"> R13 </td>
+  		<td> The system shall provide an operation to <i>view a list of all accounts that are in debt</i> in the bank. 
+  		This outputs the set of accounts numbers corresponding to accounts held in the bank that are in debt. </td>
+  		</tr>
+  		<td bgcolor="silver"> R14 </td>
+  		<td> The system shall provide an operation to <i>delete accounts</i> from the system. 
+  		This takes as an input the number of the account to be deleted. A bank account may be deleted provided its balance is 0.  </td>
+  		</tr>
+  		<td bgcolor="silver"> R15 </td>
+  		<td> Users have to authenticate themselves prior to opening a system session (<i>login</i>), 
+  		which needs to be closed when they no longer need the system's services (<i>logout</i>).  
+  		</td>
+  		</tr>
+  		<td bgcolor="silver"> R16 </td>
+  		<td> Users have their access to the system suspended if they miss a password for three consecutive times.
+  		</td>
+  		</tr>
+  		<td bgcolor="silver"> R17 </td>
+  		<td> There are two kinds of users: <i>clerks</i> and <i>managers</i>. 
+  		Managers can execute <i>create customer records</i>, <i>open accounts</i> and <i>delete accounts</i>. 
+  		Clerks can execute <i>deposit</i> and <i>withdraw</i>. Both managers and clerks can execute <i>get balance</i>, <i>get customer accounts</i> 
+  		and <i>get accounts in debt</i>.
+  		</td>
+  		</tr>
+  		<td bgcolor="silver"> R18 </td>
+  		<td> A system service or operation may be used provided users have an open session and they have the required permissions to execute task.
+  		</td>
+  		</tr>
+  		<td bgcolor="silver"> R19 </td>
+  		<td> The system shall provide a functionality to suspend transactions for security reasons. If transactions are suspended, no deposits and withdrawals are allowed. 
+  		The system shall allow transactions to be resumed once they have been suspended.
+  		</td>
+  		</tr>
+		</tbody>
+		</table>
+		</div>
+		
+		<p>
+		
+		<h1 id="model-overview">Overview of VCL model</h1>
+		
+		 <p>
+		 The VCL model of <i>secure simple bank</i> comprises a total of 13 packages. They are as follows:
+		 </p>
+		
+		<img src="img/CommonTypesPD.png">
+		<img src="img/BankPD.png">
+		<img src="img/AuthenticationPD.png">
+		<img src="img/AccessControlPD.png">
+		<img src="img/AuthorisationPD.png">
+		<img src="img/RolesAndTasksBankPD.png">
+		<img src="img/SecForBankPD.png">
+		<img src="img/TransactionsSwitchPD.png">
+		<img src="img/BankWithTransSwitchPD.png">
+		<img src="img/BankACJIPD.png">
+		<img src="img/BankWithJIPD.png">
+		<img src="img/SecBankPD.png">
+		
+		<p> The package <b>SecBank</b> represents the overall <i>Secure Simple Bank</i> system. The package <b>Bank</b> represents the domain
+		concern of banking; <b>Authentication</b> represents the core of the <i>authentication</i> security concern; 
+		<b>AccessControl</b> represents the <i>access control</i> security concern
+		</p>
+		
+		<p>
+		The following sections give step by step instructions on how to build the VCL packages shown above, and how to 
+        generate Z specifications from them.</p>
+
+		<h1 id="starting">Launching VCB and starting a new VCL model</h1>
+		<ol>
+		<li> Install VCB, if you have not already done so. Installation instructions are available <a href="../download.html"> here</a>.</li>
+		<li> Launch Eclipse. Start a new VCL model by creating a new Eclipse project. From the <b>File</b> menu, select the option <b>New/Project...</b>; under the 
+		tab <b>General</b>, select <b>Project</b> and press the <b>Next</b> button.</li>
+		<li> In the <b>New Project</b> dialog, give the name <i>SecBank</i> to the project. 
+		Press the button <b>Finish</b> to create the project.</li>
+        </ol>	
+        
+        <h1 id="vcl-common-types">Package <b>CommonTypes</b></h1>
+        
+        We need to create the package <i>CommonTypes</i>. This is as follows:
+        <ol>
+        <li> From the the <b>File</b> menu, select the option <b>New/Other...</b>; 
+		under the tab <b>Visual Contract Language</b>, select <b>New VCL Package</b> option and press <b>Next</b>. </li>
+		<li> Enter <i>CommonTypes</i> for the package name and press <b>Finish</b>.</li>
+		<li> This will result in the creation of three diagrams: a package diagram ('CommonTypes.vclpd'), a structural diagram ('CommonTypes.vclsd') and a 
+		behaviour diagram ('CommonTypes.vclbd'). Open the package diagram by double-clicking its file in the Package Explorer.</li>
+		
+		<p>
+		<img src="img/CommonTypesPD.png">
+		</p>
+		
+		<li> The package diagram identifies the current package <b>CommonTypes</b> (current package is bold-lined). 
+		By default, a <i>container</i> package is created (container packages have their name written in italics). This is fine; 
+		<b>CommonTypes</b> is a container package.</li>
+		<li> We now open the structural diagram by double-cliking on its file from Eclipse's Package Explorer (file 'CommonTypes.vclsd').
+		Select the <i>primary blob</i> item from the pallete add click on the canvas to create a primary blob; name it <b>Name</b>. This defines 
+		a set of names.</li>
+		
+		<p>
+		<img src="img/CommonTypesSD.png">
+		</p>
+		<li> This concludes the definition of the package <b>CommonTypes</b>.
+		</li>
+        </ol>
+        
+        <h1 id="vcl-bank">Package <b>Bank</b></h1>
+        
+        To create the package  <b>Bank</b> follow the tutorial of the <a href="../SBDemo/index.html">simple bank case study</a>.
+        There are two differences:
+        <ol>
+        <li>  The package <b>Bank</b> must extend (include inside) the package <b>CommonTypes</b> in the package diagram.</li>
+        <p>
+		<img src="img/BankPD.png">
+		</p>
+		<li> The blob <b>Name</b> must have the <i>Is imported</i> property set to true (the symbol ↑ shows up) because
+        it is imported from <b>CommonTypes</b>. 
+        </li>
+		<p>
+		<img src="img/BankSD.png">
+		</p>
+		<li> The remaining diagrams of package <b>Bank</b> are as in the <a href="../SBDemo/index.html">simple bank case study</a>.
+        </ol>
+          
+		<h1 id="vcl-authentication">Package <b>Authentication</b></h1>
+		
+		<p> We now create the package <b>Authentication</b>, which describes in VCL the core of the <i>authentication</i> concern. 
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>Authentication</b>. On the package diagram, select the current package and change its kind on
+		the properties window from <i>Container</i> to <i>Ensemble</i>. Select the package item from the Palette, and place it inside the package 
+		<b>Authentication</b>, name it <b>CommonTypes</b>.
+		</li>
+		<p>
+		<img src="img/AuthenticationPD.png">
+		</p>
+		
+		<li> Create the package's SD. It is as follows:
+		<ul>
+		<li> There are two class sets, <b>User</b> and <b>Session</b>, with a relation edge named <b>HasSession</b> 
+		relating them; a user may have a session and a session must be associated with a user. 
+		</li>
+		<li> Set <b>User</b> has properties <b>name</b> 
+		(of reference set <b>Name</b>), <b>uid</b> (of set <b>UID</b>), <b>pw</b> (of set <b>Password</b>), 
+		<b>pwMisses</b> (of primitive set <b>Nat</b>) and <b>status</b> of set <b>UserStatus</b> (an enumerated set with values
+		<b>loggedIn</b>, <b>blocked</b> and <b>loggedOut</b>). 
+		<b>User</b> also has local constant <b>maxPwMisses</b> of type <b>Nat</b> and the local
+		 invariant <b>MaxPwMissesInv</b>. 
+		 </li>
+		 <li>Set <b>Session</b> has properties <b>sid</b> of set <b>SID</b>, and <b>startTm</b>
+		 and <b>lastTmActive</b> of reference set <b>TimeNat</b>. 
+		 </li>
+		 <li>
+		 Create a global invariant with name <b>HasSessionIffLoggedIn</b>.
+		 </li>
+		 <li>
+		 Create the definition set <b>LoginResult</b>, which defines an enumeration
+		 containing the values <b>loginOk</b>, <b>isBlocked</b> and <b>wrongPw</b>.  Set <b>LoginResult</b> gives the
+		 result of a <i>login</i> operation.
+		 </li>
+		 </ul>
+		</li>
+		<p>
+		<img src="img/AuthenticationSD.png">
+		</p>
+		<li> Double-click on the local invariant <b>MaxPwMissesInv</b> to define it. The invariant says that the property <b>pwMisses</b>
+		must be less or equal than the constant <b>maxPwMisses</b>.
+		</li>
+		
+		<p>
+		<img src="img/AuthenticationUser-MaxPwMissesInv.png">
+		</p>
+		
+		<li> Double-click on the global invariant <b>HasSessionIffLoggedIn</b> to define it. This says that if a user is logged-in then he/she 
+		must have a session. 
+		</li>
+		
+		<p>
+		<img src="img/AuthenticationHasSessionIffLoggedIn.png">
+		</p>
+		
+		<li> BD of package <b>Authentication</b> defines the following operations:
+		<ul>
+		<li> For set <b>Session</b>, the update operations <b>New</b> and <b>Delete</b>.
+		<li> For set <b>User</b>, the observe operation <b>IsLoggedIn</b>, 
+		and the update operations <b>LoginOk</b>, <b>LoginNotOk</b> and <b>Logout</b>
+		<li> Several global operations: the queries <b>UserIsLoggedIn</b> and <b>GetUserGivenUID</b>, and
+		the update operations <b>Login</b> and <b>Logout</b>.
+		</ul>
+		</li>
+		
+		<p>
+		<img src="img/AuthenticationBD.png">
+		</p>
+		
+		<li> Double-click on each operation to define them. The ADs and CDs that define them are as follows:
+		</li>
+		
+		<p>
+		<img src="img/AuthenticationSession-New.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationSession-Delete.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-IsLoggedIn.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-LoginOk.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-LoginNotOk.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-LoginBlocked.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-LoginWrongPwToBlocked.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-LoginWrongPw.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUser-Logout.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationUserIsLoggedIn.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationGetUserGivenUID.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationLogin.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationLoginOk.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationLoginNotOk.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationHasSessionAddNew.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationLogout.png">
+		<img src="img/AuthenticationGetUserSession.png">
+		</p>
+		
+		<p>
+		<img src="img/AuthenticationHasSessionDelGivenUser.png">
+		</p>
+		
+		</ol>
+		
+		<h1 id="vcl-access-control">Package <b>AccessControl</b></h1>
+		
+		<p> We now create the VCL package <b>AccessControl</b>, which isolates the <i>access control</i> concern.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>AccessControl</b>. Set its kind to <i>Ensemble</i>. 
+		</li>
+		<p>
+		<img src="img/AccessControlPD.png">
+		</p>
+		
+		<li> Open the package's SD. Create three value blobs: <b>User</b>, <b>Role</b> and <b>Task</b>. Create a relation-edge
+		between <b>User</b> and <b>Role</b>; call it <b>HasRole</b>. Create another relation-edge
+		between <b>Role</b> and <b>Task</b>; call it <b>HasPerm</b>.
+		</li>
+		
+		<p>
+		<img src="img/AccessControlSD.png">
+		</p>
+		
+		<li> The package's BD contains a single observe operation.
+		</li>
+		
+		<p>
+		<img src="img/AccessControlBD.png">
+		</p>
+		
+		<li> Definition of operation <b>UserHasPerm</b> involves two ADs:
+		</li>
+		<p>
+		<img src="img/AccessControlUserHasPerm.png">
+		<img src="img/AccessControlRoleHasPerm.png">
+		</p>
+		
+		<h1 id="vcl-authorisation">Package <b>Authorisation</b></h1>
+		
+		<p> We now create the package <b>Authorisation</b>, which puts together the concerns of <i>authentication</i> and <i>access control</i>.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>AccessControl</b>. Set its kind to <i>Ensemble</i>. Put two packages inside the current package:
+		<b>Authentication</b> (give it the alias <b>AU</b>) and <b>AcessControl</b> (give it the alias <b>AC</b>). Create an <i>overrides</i> 
+		dependency from the package  <b>Authentication</b> to the package <b>AcessControl</b>. You need to say which blobs are being overriden; 
+		in the properties window, in the <b>Names</b> field, enter <b>User</b>. This says that  <b>Authentication</b> overrides the blob <b>User</b>
+		in <b>AcessControl</b>.
+		</li>
+		
+		<p>
+		<img src="img/AuthorisationPD.png">
+		</p>
+		
+		<li> The BD introduces a single operation: <b>UserLoggedInAndHasPerm</b>. 
+		</li>
+		
+		<p>
+		<img src="img/AuthorisationBD.png">
+		</p>
+		
+		<li> The AD that defines the operation <b>UserLoggedInAndHasPerm</b> puts together in a single operation, the operation
+		<b>UserHasPerm</b> from <b>Authentication</b> and the operation <b>UserIsLoggedIn</b> from <b>AccessControl</b>.
+		</li>
+		
+		<p>
+		<img src="img/AuthorisationUserLoggedInAndHasPerm.png">
+		</p> 
+		
+		</ol>	
+		
+		<h1 id="vcl-roles-and-tasks-bank">Package <b>RolesAndTasksBank</b></h1>
+		
+		<p> We now create the package <b>RolesAndTasksBank</b>, which defines a set of roles and tasks for the purpose of secure simple bank system.
+		These are used to enfore access control.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>RolesAndTasksBank</b>. This is a container package so no need to change its kind in the PD.
+		</li>
+		
+		<p>
+		<img src="img/RolesAndTasksBankPD.png">
+		</p>
+		
+		<li> Open the package's SD. This package is made of two primitive blobs, <b>Role</b> and <b>Task</b>, and two 
+		derived blob, <b>ManagerTasks</b> and <b>ClerkTasks</b>. They are as follows:
+		</li>
+		
+		<p>
+		<img src="img/RolesAndTasksBankSD.png">
+		</p>
+		
+		</ol>
+		
+		<h1 id="vcl-sec-for-bank">Package <b>SecForBank</b></h1>
+		
+		<p> We now create the package <b>SecForBank</b>, which customises <b>Authorisation</b> for the purpose of the secure simple bank system.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>SecForBank</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). Put two packages inside the current package:
+		<b>Authorisation</b> and <b>RolesAndTasksBank</b>. Create an <i>overrides</i> 
+		dependency from the package  <b>RolesAndTasksBank</b> to the package <b>Authorisation</b>. You need to say which blobs are being overriden; 
+		in the properties window, in the <b>Names</b> field, enter <b>Role and Task</b>. This says that <b>RolesAndTasksBank</b> overrides blobs 
+		<b>Role</b> and <b>Task</b> in <b>Authorisation</b>.
+		</li>
+		<p>
+		<img src="img/SecForBankPD.png">
+		</p>
+		
+		<li> Open the package's SD. Introduce a reference to the constant <b>maxPwMisses</b> of blob <b>User</b> defined in package <b>Authentication</b>. 
+		Introduce a definition edge to define the value of the constant through an assertion diagram. 
+		</li>
+		
+		<p>
+		<img src="img/SecForBankSD.png">
+		</p>
+		
+		<li> Double-click on the constant's definition AD. In the predicate, say that the constant must bne equal to 3.
+		</li>
+		
+		<p>
+		<img src="img/SecForBankUser_maxPwMissesDef.png">
+		</p>
+		
+		<li> Open the package's BD. Introduce an assertion named <b>Init</b> to represent the package's initialisation. Then introduce 
+		an integral extension that says that all operations of package <b>Authorisation</b> are to be part of package  <b>SecForBank</b>
+		</li>
+		
+		<p>
+		<img src="img/SecForBankBD.png">
+		</p>
+		
+		<li> Double-click on the assertion named <b>Init</b> on the BD. This defines the initial value of the relation-edge <b>HasPerm</b>. It says
+		that the r&ocirc;le <b>Clerk</b> has permission to excute all tasks defined in blob <b>ClerkTasks</b> and that the r&ocirc;le <b>Manager</b> can execute all tasks 
+		defined in blob <b>ManagerTasks</b>.
+		</li>
+		
+		<p>
+		<img src="img/SecForBankInit.png">
+		</p>
+		
+		</ol>
+		
+		<h1 id="vcl-transactions-switch">Package <b>TransactionsSwitch</b></h1>
+		
+		<p> We now create the package <b>TransactionsSwitch</b>, which enables users to turn <i>on</i> and <i>off</i> the transactions at 
+		the <b>bank</b> for security reasons.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>TransactionsSwitch</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). 
+		</li>
+		
+		<p>
+		<img src="img/TransactionsSwitchPD.png">
+		</p>
+		
+		<li> Open the package's SD. Introduce a package blob called <b>TransactionsSwitch</b> with one property edge called <b>suspended</b>
+		of type blob <b>OnOff</b> (an enumerated blob with values <b>On</b> and <b>Off</b>).
+		</li>
+		
+		<p>
+		<img src="img/TransactionsSwitchSD.png">
+		</p>
+		
+		<li> Open the package's BD. This includes an assertion <b>Init</b> to define the package's initialisation; 
+		two update operations:  <b>TransactionsOn</b> and <b>TransactionsOff</b>; and one observe operation: <b>IsSuspended</b>.
+		</li>
+		
+		<p>
+		<img src="img/TransactionsSwitchBD.png">
+		</p>
+		
+		<li> The AD of the package's initialisation sets the <b>suspended</b> property of the package blob to <b>Off</b>. This says that 
+		initially the transactions are not suspended.
+		</li>
+		
+		<p>
+		<img src="img/TransactionsSwitchInit.png">
+		</p>
+		
+		<li> The operations <b>TransactionsOn</b> and <b>TransactionsOff</b> simply switch the value of the <b>suspended</b> property to <b>On</b>
+		or <b>Off</b>.
+		</li>
+		<p>
+		<img src="img/TransactionsSwitchTransactionsOn.png">
+		</p>
+		
+		<p>
+		<img src="img/TransactionsSwitchTransactionsOff.png">
+		</p>
+		
+		<li> The observe operation <b>IsSuspended</b> encapsulates a predicate that indicates whether the transactions are suspended or not.
+		</li>
+		
+		<p>
+		<img src="img/TransactionsSwitchIsSuspended.png">
+		</p>
+		
+		</ol>
+		
+		<h1 id="vcl-BankWithTransSwitch">Package <b>BankWithTransSwitch</b></h1>
+		
+		<p> We now create the package <b>BankWithTransSwitch</b>, which equips the domain package <b>Bank</b> with the transactions switch
+		functionality of package  <b>TransactionsSwitch</b>.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>BankWithTransSwitch</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). Put two packages inside the current package:
+		<b>Bank</b> and <b>TransactionsSwitch</b> (set alias to <b>TS</b>).	
+		</li>
+		
+		<p>
+		<img src="img/BankWithTransSwitchPD.png">
+		</p>
+			
+		<li> Open the package's BD. Introduce one integral extension for the package bank, but excluding the operations 
+		<b>AccWithdraw</b> and <b>AccDeposit</b>. Create one Join Box and place the operations <b>AccWithdraw</b> and <b>AccDeposit</b> of package
+		<b>Bank</b> inside the box. Then create a join contract and name it <b>TransSwitchOp</b>.
+		</li>
+		<p>
+		<img src="img/BankWithTransSwitchBD.png">
+		</p>
+		
+		<li> The contract <b>TransSwitchOp</b> references the <b>IsSuspended</b> query from the package <b>TransactionsSwitch</b> and negates it, and then 
+		includes the reference to the opeartion that is the target of the join (<b>TransOp</b>).
+		</li>
+		<p>
+		<img src="img/BankWithTransSwitchTransSwitchOp.png">
+		</p>
+		</ol>
+		
+		<h1 id="vcl-BankACJI">Package <b>BankACJI</b></h1>
+		
+		<p> We now create the package <b>BankACJI</b> (Bank Access Control Join Interface), which extends the package </b>RolesAndTasksBank</b>.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>BankACJI</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). Put two packages inside the current package:
+		<b>Bank</b> and <b>TransactionsSwitch</b> (set alias to <b>TS</b>).	
+		</li>
+		
+		<p>
+		<img src="img/BankACJIPD.png">
+		</p>
+		
+		<li> Open the package's BD. Create the following BD.
+		</li>
+		
+		<p>
+		<img src="img/BankACJIBD.png">
+		</p>
+		
+		<li> Define each operation of the BD. The VCL operation definitions are as follows.
+		</li>
+		
+		<p>
+		<img src="img/BankACJICreateCustomer.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIOpenAccount.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIAccDeposit.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIAccWithdraw.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIAccDelete.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIAccGetBalance.png">
+		<img src="img/BankACJIGetAccsInDebt.png">
+		</p>
+		
+		<p>
+		<img src="img/BankACJIGetCustAccs.png">
+		</p>
+		</ol>
+		
+		<h1 id="vcl-BankWithJI">Package <b>BankWithJI</b></h1>
+		
+		<p> We now create the package <b>BankWithJI</b> (Bank with join interfaces), which extends the packages <b>BankACJI</b> and <b>BankWithTransSwitch</b>.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>BankWithJI</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). Put two packages inside the current package:
+		<b>BankACJI</b> (set alias to <b>BJI</b>) and <b>BankWithTransSwitch</b> (set alias to <b>B</b>).	
+		</li>
+		
+		<p>
+		<img src="img/BankWithJIPD.png">
+		</p>
+		
+		<li> Open the package's BD. Create the a merge box. Inside the merge box place the package <b>BankACJI</b> and connect it with an edge 
+		to an <i>All</i> contract. Do the same for the package <b>BankWithTransSwitch</b>.
+		</li>
+		
+		<p>
+		<img src="img/BankWithJIBD.png">
+		</p>
+		
+		</ol>
+		
+		
+		<h1 id="vcl-SecBank">Package <b>SecBank</b></h1>
+		
+		<p> We now create the package <b>SecBank</b>, which is the package that represents the overall secure simple bank system. 
+		<b>SecBank</b> extends packages <b>SecForBank</b>, <b>AuthenticationOps</b>, <b>BankWithJI</b> and <b>TransactionsSwitch</b>.
+		</p>
+		
+		<ol>
+		<li> Create a new package and name it <b>SecBank</b>. In the package diagram, change the kind of the current package to
+		<i>ensemble</i> (in the properties window). Put the following packages inside the current package:
+		<b>SecForBank</b> (set alias to <b>SFB</b>), <b>AuthenticationOps</b>, <b>BankWithJI</b> (set alias to <b>B</b>),
+		and <b>TransactionsSwitch</b>.	
+		</li>
+		
+		<p>
+		<img src="img/SecBankPD.png">
+		</p>
+		
+		<li> Open the package's BD. Create two integral extensions for packages <b>TransactionsSwitch</b> (excluding operation <b>IsSuspended</b>) 
+		and <b>AuthenticationOps</b>. Create a join box. Inside the jon box, place the package <b>BankWithJI</b> and connect it with an edge 
+		to an <i>All</i> contract. Attach the join contract <b>AuthACJoin</b> to the join box.
+		</li>
+		
+		<p>
+		<img src="img/SecBankBD.png">
+		</p>
+		
+		<li> Define the join contract by double-clicking on <b>AuthACJoin</b>. The definition of this join contract is as follows:
+		
+		<p>
+		<img src="img/SecBankAuthACJoin.png">
+		</p>
+		
+		</ol>
+		
+		<h1 id="refs">References</h1>
+		<ol>
+		<li id="rvcl-ssb-tr"> Nuno Am&aacute;lio. <a href="../doc/vcl_ssb_tr.pdf">The VCL model of secure simple Bank</a>.
+	    	Technical Report TR-11-10. Univ. of Luxembourg, LASSY. 2011. </li>
+	    <li id="rvcl-dbc"> Nuno Am&aacute;lio, Pierre Kelsen. <a href="../doc/vcl-dbc.pdf">Modular Design by Contract Visually and Formally using VCL</a>.
+	    	In VL/HCC 2010. IEEE. 2010. </li>
+	    <li id="rvcl-emmsad10"> Nuno Am&aacute;lio, Pierre Kelsen, Qin Ma. <a href="http://www.springerlink.com/content/k178753666768321/">
+	    		Specifying structural properties and their constraints formally, visually and modularly using VCL</a>.
+	    		In EMMSAD 2010: 261-273. LNBIP 50. Springer. 2010.</li>
+	    <li id="rvcl-techrep"> Nuno Am&aacute;lio, Pierre Kelsen. <a href="../doc/vcl-tech-rep.pdf">The visual contract language: abstract modelling of software systems visually, formally and modularly</a>
+    	    Technical Report TR-10-03. Univ. of Luxembourg, LASSY. 2010. </li>
+    	<li id="rvcl-cccms"> Nuno Am&aacute;lio, Pierre Kelsen, Qin Ma, Christian Glodt.<a href="../doc/taosd-paper.pdf">
+	    	   Using VCL as an Aspect-Oriented Approach to Requirements Modelling</a>. 
+	    	   In Transactions on Aspect-Oriented Software Development 7: 151-199. Springer. 2010.</li>
+    	</ol>
+	</div>
+    
+	<div id="footer">&copy; 2010-2011 University of Luxembourg<br>
+	  All rights reserved</div>
+</body>
+</html>

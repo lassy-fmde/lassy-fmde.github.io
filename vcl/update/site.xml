@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/lu.uni.vcl.feature_1.0.91.201708040940.jar" id="lu.uni.vcl.feature" version="1.0.91.201708040940">
+      <category name="lu.uni.vcl"/>
+   </feature>
+   <category-def name="lu.uni.vcl" label="VCL Visual Contract Language"/>
+</site>
