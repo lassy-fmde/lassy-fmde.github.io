@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="../css/reset.css" type="text/css">
 	<link rel="stylesheet" href="../css/styles.css" type="text/css">
 	<meta name="keywords" content="vcl, modelling>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<script type="text/javascript">
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-28914227-1']);
@@ -34,7 +34,7 @@
 
 	<div id="content">
 	<div id="sidebar">
-	
+
 		<h1>Content</h1>
 		<ul>
             <li><a href="#intro">Introduction</a></li>
@@ -57,46 +57,46 @@
             <li><a href="#refs">References</a></li>
 		</ul>
 	</div>
-	
+
     <div id="text">
 		<h1 id="intro">VCB Tutorial based on the  <i>Simple Bank</i> case study</h1>
-		<p> This tutorial shows how to build the VCL model of the  <i>Simple Bank</i> case study [<a href="#rvcl-dbc">1</a>, <a href="#rvcl-emmsad10">2</a>, <a href="#rvcl-techrep">3</a>, <a href="#zoo">4</a>, <a href="#phdThesis">5</a>] 
+		<p> This tutorial shows how to build the VCL model of the  <i>Simple Bank</i> case study [<a href="#rvcl-dbc">1</a>, <a href="#rvcl-emmsad10">2</a>, <a href="#rvcl-techrep">3</a>, <a href="#zoo">4</a>, <a href="#phdThesis">5</a>]
 		  using VCB. </p>
-		  
+
 		<p>The complete VCL model of this case study can be obtained from <a href="SimpleBank.zip">here</a> (you can import the model into eclipse:
 		File->Import->Existing Projects Into Workspace->Select Archive File). The sections that follow present the requirements of the case study,
 		give an overview of the VCL model, and provide detailed instructions on how to build parts of the model using VCB.
 		</p>
-		
+
 		<h1 id="requirements">Requirements of <i>Simple Bank</i></h1>
-		
+
 		<p>The following table gives the requirements of the simple bank case study to be modelled in VCL.<p>
-		
+
 		<style>
 		table,th,td
 		{
 		border:1px solid black;
 		}
 		</style>
-		
-		<div> 
+
+		<div>
 		<table>
 		<tbody>
 		<tr>
   		<td bgcolor="silver"> R1 </td>
-  		<td>The bank system shall keep information of customers and their Bank accounts. 
+  		<td>The bank system shall keep information of customers and their Bank accounts.
   		A customer may hold many accounts; an account is held by one customer only.
   		</td>
 		</tr>
 		<tr>
   		<td bgcolor="silver"> R2 </td>
-  		<td>A customer record comprises a customer number, a name, an address and a type (either <i>corporate</i> or <i>personal</i>). 
+  		<td>A customer record comprises a customer number, a name, an address and a type (either <i>corporate</i> or <i>personal</i>).
   		Each customer has its own unique customer number.
   		</td>
 		</tr>
 		<tr>
   		<td bgcolor="silver"> R3 </td>
-  		<td>A Bank account shall have an account number, a balance indicating how much money there is in it, and its type (either <i>current</i> or <i>savings</i>). 
+  		<td>A Bank account shall have an account number, a balance indicating how much money there is in it, and its type (either <i>current</i> or <i>savings</i>).
    		Each account has its own unique account number.
   		</td>
 		</tr>
@@ -122,306 +122,306 @@ customer number is to be assigned internally by the system. </td>
   		</tr>
   		<tr>
   		<td bgcolor="silver"> R8 </td>
-  		<td> The system shall provide an operation to <i>open bank accounts</i> for some customer. 
-  		This takes as input a customer number and a type of account; the account number is to be assigned internally by the system. 
+  		<td> The system shall provide an operation to <i>open bank accounts</i> for some customer.
+  		This takes as input a customer number and a type of account; the account number is to be assigned internally by the system.
   		</td>
   		</tr>
   		<tr>
   		<td bgcolor="silver"> R9 </td>
-  		<td> The system shall provide an operation to <i>deposit money</i> into a bank account. 
+  		<td> The system shall provide an operation to <i>deposit money</i> into a bank account.
   		This takes as input an account number and an amount to be deposited. </td>
   		</tr>
   		<td bgcolor="silver"> R10 </td>
-  		<td> The system shall provide an operation to <i>withdraw money</i> from some bank account. 
+  		<td> The system shall provide an operation to <i>withdraw money</i> from some bank account.
   		This takes as input an account number and an amount to be withdrawn. </td>
   		</tr>
   		<tr>
   		<td bgcolor="silver"> R11 </td>
-  		<td> The system shall provide an operation to <i>view the balance of some bank account</i>. 
+  		<td> The system shall provide an operation to <i>view the balance of some bank account</i>.
   		This takes as input an account number and outputs the account's balance. </td>
   		</tr>
   		<td bgcolor="silver"> R12 </td>
-  		<td> The system shall provide an operation to <i>obtain a list of all accounts of some customer</i>. 
+  		<td> The system shall provide an operation to <i>obtain a list of all accounts of some customer</i>.
   		This takes as input a customer number and outputs the set of accounts numbers corresponding to accounts held in the bank by the customer. </td>
   		</tr>
   		<td bgcolor="silver"> R13 </td>
-  		<td> The system shall provide an operation to <i>view a list of all accounts that are in debt</i> in the bank. 
+  		<td> The system shall provide an operation to <i>view a list of all accounts that are in debt</i> in the bank.
   		This outputs the set of accounts numbers corresponding to accounts held in the bank that are in debt. </td>
   		</tr>
   		<td bgcolor="silver"> R14 </td>
-  		<td> The system shall provide an operation to <i>delete accounts</i> from the system. 
+  		<td> The system shall provide an operation to <i>delete accounts</i> from the system.
   		This takes as an input the number of the account to be deleted. A bank account may be deleted provided its balance is 0.  </td>
   		</tr>
 		</tbody>
 		</table>
 		</div>
-		
+
 		<p>
-		
+
 		<h1 id="model-overview">Overview of VCL model</h1>
-		
+
 		<p> The VCL model of  <i>Simple Bank</i> is made of a single ensemble package called <i>Bank</i>. Its package diagram is:</p>
 		<img src="img/BankPD.png">
-		
+
 		<p>  The structural diagram (SD) of the package <b>Bank</b> is as follows:
 		</p>
 		<img src="img/BankSD.png">
-		
-		<p>This SD declares nine invariants represented as VCL assertions (elongated hexagons). They represent different forms of the invariants 
-		of the problem being modelled. They are as follows: 
+
+		<p>This SD declares nine invariants represented as VCL assertions (elongated hexagons). They represent different forms of the invariants
+		of the problem being modelled. They are as follows:
 		 'SavingsArePositive', 'SavingsArePositive2',
-		'CustIdsUnique', 'AccountIdsUnique', 
-		'CorporateHaveNoSavings', 'CorporateHaveNoSavingsQ', 'HasCurrentBefSavings', 'HasCurrentBefSavingsR' and 'HasCurrentBefSavingsQ'. 
+		'CustIdsUnique', 'AccountIdsUnique',
+		'CorporateHaveNoSavings', 'CorporateHaveNoSavingsQ', 'HasCurrentBefSavings', 'HasCurrentBefSavingsR' and 'HasCurrentBefSavingsQ'.
 		</p>
-		
+
 		<p>
 		The invariants are described in the following assertion diagrams:
 		</p>
-		
-		<img src="img/BankAccount-SavingsArePositive.png"> 
-		<img src="img/BankSavingsArePositive2.png"> 
-		<img src="img/BankCustIdsUnique.png"> 
-		<img src="img/BankAccountIdsUnique.png"> 
+
+		<img src="img/BankAccount-SavingsArePositive.png">
+		<img src="img/BankSavingsArePositive2.png">
+		<img src="img/BankCustIdsUnique.png">
+		<img src="img/BankAccountIdsUnique.png">
 		<p>
-		<img src="img/BankCorporateHaveNoSavings.png"> 
+		<img src="img/BankCorporateHaveNoSavings.png">
 		</p>
-		<img src="img/BankCorporateHaveNoSavingsQ.png"> 
+		<img src="img/BankCorporateHaveNoSavingsQ.png">
 		<p>
-		<img src="img/BankHasCurrentBefSavings.png"> 
+		<img src="img/BankHasCurrentBefSavings.png">
 		</p>
-		<img src="img/BankHasCurrentBefSavingsR.png"> 
-		<img src="img/BankCustsWithCurrent.png"> 
+		<img src="img/BankHasCurrentBefSavingsR.png">
+		<img src="img/BankCustsWithCurrent.png">
 		<img src="img/BankCustsWithSavings.png">
 		<p>
-		<img src="img/BankHasCurrentBefSavingsQ.png"> 
+		<img src="img/BankHasCurrentBefSavingsQ.png">
 		</p>
-		
+
 		</p> A behaviour diagram identifies the operations of some package. The Behaviour diagram of 'Bank' is as follows:
 		</p>
-		<img src="img/BankBD.png"> 
-		
-		<p> There two types of operations: <i>update</i> operations (they change state) and <i>observe</i> operations (or queries). Update operations are 
-		represented as contracts (double-lined elongated hexagons) and queries as assertions  (single-lined elongated hexagons). An operation can be 
-		<i>local</i> or <i>global</i>. Local operations are connected to a set. Global operations stand unconnected. 
+		<img src="img/BankBD.png">
+
+		<p> There two types of operations: <i>update</i> operations (they change state) and <i>observe</i> operations (or queries). Update operations are
+		represented as contracts (double-lined elongated hexagons) and queries as assertions  (single-lined elongated hexagons). An operation can be
+		<i>local</i> or <i>global</i>. Local operations are connected to a set. Global operations stand unconnected.
 		</p>
-		
+
 		<p> The VCL diagrams describing the local operations of set 'Customer' are:</p>
-		
-		<img src="img/BankCustomer_New.png"> 
-		
+
+		<img src="img/BankCustomer_New.png">
+
 		<p> The VCL diagrams describing operations of set 'Account' are:</p>
-		
-		<img src="img/BankAccount-New.png"> 
-		<img src="img/BankAccount_Deposit.png"> 
-		<img src="img/BankAccount_Withdraw.png"> 
+
+		<img src="img/BankAccount-New.png">
+		<img src="img/BankAccount_Deposit.png">
+		<img src="img/BankAccount_Withdraw.png">
 		<img src="img/BankAccount_Delete.png">
 		<img src="img/BankAccount_GetBalance.png">
-		
+
 		<p> The VCL diagrams describing global operations of the package 'Bank' are:
 		</p>
-		
-		<img src="img/BankCreateCustomer.png"> 
-		<img src="img/BankOpenAccount.png"> 
+
+		<img src="img/BankCreateCustomer.png">
+		<img src="img/BankOpenAccount.png">
 		<img src="img/BankGetCustomerGivenCustNo.png">
 		<img src="img/BankIsDistinctCustNo.png">
-		<img src="img/BankHoldsAddNew.png"> 
-		<img src="img/BankAccDeposit.png"> 
-		<img src="img/BankGetAccountGivenAccNo.png"> 
+		<img src="img/BankHoldsAddNew.png">
+		<img src="img/BankAccDeposit.png">
+		<img src="img/BankGetAccountGivenAccNo.png">
 		<img src="img/BankIsDistinctAccNo.png">
-		<img src="img/BankAccWithdraw.png"> 
+		<img src="img/BankAccWithdraw.png">
 		<img src="img/BankAccDelete.png">
-		<img src="img/BankHoldsDelGivenAcc.png"> 
-		<img src="img/BankAccGetBalance.png"> 
-		<img src="img/BankGetAccsInDebt.png"> 
-		<img src="img/BankGetCustAccs.png"> 
-		
+		<img src="img/BankHoldsDelGivenAcc.png">
+		<img src="img/BankAccGetBalance.png">
+		<img src="img/BankGetAccsInDebt.png">
+		<img src="img/BankGetCustAccs.png">
+
 		<p> The Z that is generated by VCB for these VCL diagrams is given <a href="SimpleBank.pdf"> here </a>.
 		</p>
-        
-        <p> The following sections give step by step instructions on how to build the VCL diagrams shown above, and how to 
+
+        <p> The following sections give step by step instructions on how to build the VCL diagrams shown above, and how to
         generate Z specifications from them.</p>
 
 		<h1 id="starting">Launching VCB and starting a new VCL model</h1>
 		<ol>
 		<li> Install VCB, if you have not already done so. Installation instructions are available <a href="../download.html"> here</a>.</li>
 		<li> <p>Launch Eclipse. Start a new VCL model by creating a new Eclipse project. Here's a video showing how to do this:</p>
-			<iframe width="560" height="315" src="http://www.youtube.com/embed/q50qFPSEGJU?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/q50qFPSEGJU?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 			<p><a href="../videos/CreateVCLModel.mp4">(Download Video)</a></p>
 		</li>
-		<li> To create a new Eclipse project, go to the "File" menu and select the option "New/Project...". Under the 
+		<li> To create a new Eclipse project, go to the "File" menu and select the option "New/Project...". Under the
 		tab "General", select "Project" and press the "Next" button.
 		</li>
-		<li> In the "New Project" dialog, give the name "SimpleBank" to the project. 
+		<li> In the "New Project" dialog, give the name "SimpleBank" to the project.
 		Press the button "Finish" to create the project.
 		</li>
-        </ol>	
-        
+        </ol>
+
         <h1 id="vclpd">Creating the Package</h1>
-        
+
         <p>We need to create the package 'Bank' for the <i>SimpleBank</i> model. Here's a video showing how to do this:</p>
-        <iframe width="560" height="315" src="http://www.youtube.com/embed/qRVKGL9wkFg?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qRVKGL9wkFg?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
         <p><a href="../videos/VCLCreatePkg.mp4">(Download Video)</a></p>
-        
+
         The step-by-step instructions for creating the package 'Bank' are as follows:
         <ol>
-        <li> From the the "File" menu, select the option "New->Other..."; 
-		under the tab "Visual Contract Language", select "New VCL Package" option and press "Next". 
+        <li> From the the "File" menu, select the option "New->Other...";
+		under the tab "Visual Contract Language", select "New VCL Package" option and press "Next".
 		</li>
 		<li> Enter "Bank" for the package name and press "Finish".
 		</li>
-		<li> This will result in the creation of three diagrams: a package diagram ('Bank.vclpd'), a structural diagram ('Bank.vclsd') and a 
+		<li> This will result in the creation of three diagrams: a package diagram ('Bank.vclpd'), a structural diagram ('Bank.vclsd') and a
 		behaviour diagram ('Bank.vclbd'). Open the package diagram by double-clicking its file in the Eclipse's package Explorer.
 		</li>
-		
+
 		<img src="img/BankPDInit.png">
-		
-		<li> The package diagram identifies the current package 'Bank' (current package is bold-lined). By default, a "container" package (symbol &#9020) is created, 
-		but 'Bank' should be an <i>ensemble</i> package. Select the current package. In the "properties" view, change the "Kind" property 
+
+		<li> The package diagram identifies the current package 'Bank' (current package is bold-lined). By default, a "container" package (symbol &#9020) is created,
+		but 'Bank' should be an <i>ensemble</i> package. Select the current package. In the "properties" view, change the "Kind" property
 		from "Container" to "Ensemble". The symbol to the left of the package changes to &#10038.
 		</li>
 		<img src="img/BankPD.png">
         </ol>
-        
+
 		<h1 id="vclsd">Building the Structural Diagram</h1>
-		
-		<p>A structural diagram (SD) introduces the main entities or concepts of a package, defining a package's state space. 
-		We need to define in the SD of 'Bank' the main concepts of the <i>Simple Bank</i> system as described by its requirements and how those 
-		concepts are related. The aim is to define the state (or information) that the package needs to hold. In the object-oriented paradigm, 
+
+		<p>A structural diagram (SD) introduces the main entities or concepts of a package, defining a package's state space.
+		We need to define in the SD of 'Bank' the main concepts of the <i>Simple Bank</i> system as described by its requirements and how those
+		concepts are related. The aim is to define the state (or information) that the package needs to hold. In the object-oriented paradigm,
 		this involves defining classes and relations between them.
 		</p>
-		
-		<p> The next video shows how to create the main concepts of a package by defining VCL <i>class sets</i>. 
+
+		<p> The next video shows how to create the main concepts of a package by defining VCL <i>class sets</i>.
 		</p>
-		
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/pSTVEh6EGo4?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/pSTVEh6EGo4?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
-		<p>		
+		<p>
 		<a href="../videos/CreateDomainBlobs.mp4">(Download Video)</a>
 		</p>
-		
+
 		<p> And here are some step-by-step instructions on how to this:
-		
+
 		<ol>
 		<li> Open the SD by double-clicking on its file from Eclipse's Package Explorer (file 'Bank.vclsd').
 		</li>
-		<li> Accustom yourself to the diagram editor. In the center you'll find the editor panel (the drawing area). To the right, you'll find the 
+		<li> Accustom yourself to the diagram editor. In the center you'll find the editor panel (the drawing area). To the right, you'll find the
 		palette with all SD primitives. Drawing SDs involves selecting items from the palette and placing them on the editor panel.
 		</li>
-		<li> We start by creating the class set 'Customer' to represent set of Bank customers. 
-		From the "palette" ("Entities" section), click on the "PrimarySetDef" item. In the drawing area, click again on the location 
-		where you would like to place this set. Once you've clicked, a set should appear on the drawing area. Name it 'Customer'. 
+		<li> We start by creating the class set 'Customer' to represent set of Bank customers.
+		From the "palette" ("Entities" section), click on the "PrimarySetDef" item. In the drawing area, click again on the location
+		where you would like to place this set. Once you've clicked, a set should appear on the drawing area. Name it 'Customer'.
 		From the "properties" view, change the "Kind" property to "Class" (the line of the countour becomes bold).
 		You may move the set to another location in the drawing area by dragging it. </li>
-		
+
 		<img src="img/SDAfterCrCustomer.png">
-		
-		<li> Create another class set and name it 'Account'. This represents the set of accounts in the Bank.</li> 
-		
+
+		<li> Create another class set and name it 'Account'. This represents the set of accounts in the Bank.</li>
+
 		<img src="img/SDAfterCrAccount.png">
 		</ol>
-		
-		<p> We have identified the main concepts of our problem. We now need to define the state (or information) that these concepts hold. 
+
+		<p> We have identified the main concepts of our problem. We now need to define the state (or information) that these concepts hold.
 		The next video shows how to create basic state properties and sets of values.
 		</p>
-		
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/CwMlPkbwH44?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/CwMlPkbwH44?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
-		<p>		
+		<p>
 		<a href="../videos/CreateStateProperties.mp4">(Download Video)</a>
 		</p>
-		
+
 		<p> The creation of state properties (or VCL <i>property edges</i>) and basic value sets involves the following steps:
 		</p>
 		<ol>
 		<li> Customers have certain state properties (or attributes). We start by creating sets to represent values of properties;
 		a <i>value</i> set in VCL terms.
-		To do this, we click on the  "PrimarySetDef" item on the palette, and click again on the 
+		To do this, we click on the  "PrimarySetDef" item on the palette, and click again on the
 		drawing area to place the set; name it 'CustID' (the "Kind" is "Value" by default). Create another value set named 'Name' and
 		another named 'Address'. These sets represent, respectively, sets of customer numbers, customer names
 		and customer addresses. </li>
-		
+
 		<img src="img/SDAfterCrValsForCustomer.png">
-		
-		<li> We now create the actual state properties by creating VCL <i>property edges</i>. Place the mouse pointer over the 
-		set 'Customer'; two <i>connection handles</i> with arrows (see the figure below) will appear in one of the sides. 
-		Press the outgoing arrow connector, and drag the mouse pointer to 
+
+		<li> We now create the actual state properties by creating VCL <i>property edges</i>. Place the mouse pointer over the
+		set 'Customer'; two <i>connection handles</i> with arrows (see the figure below) will appear in one of the sides.
+		Press the outgoing arrow connector, and drag the mouse pointer to
 		the set 'Name', and then select the option "Create Property Edge". Name the property edge 'name'. </li>
-		
+
 		<img src="img/CreatingPropEdge.png">
-		
+
 		<li> Create other two property edge for 'Customer' and connect them to sets 'CustID' and 'Address'; name them 'custNo' and 'address',
 		respectivelly.
 		</li>
-		
+
 		<img src="img/SDAfterCrCustBasicProps.png">
         </ol>
 
-		<p> The value sets that have been defined so far introduce sets of unspecified values. Often, we need to define sets with specific values. 
+		<p> The value sets that have been defined so far introduce sets of unspecified values. Often, we need to define sets with specific values.
 		A recurring construction in VCL models is that of an <i>enumerated</i> set. The following video shows how to create the required
 		enumerated sets for <i>Simple Bank</i> together with the state properties of account.
 		</p>
 
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/gmv3YVQVNAU?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/gmv3YVQVNAU?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
-		<p>		
+		<p>
 		<a href="../videos/CreateEnumeratedSet.mp4">(Download Video)</a>
 		</p>
-		
+
 		The step-by-step instructions are as follows:
 		<ol>
-		<li> Create a value set named 'CustType". We need to create the objects (or values) to place inside this set. Click inside 'CustType' and 
+		<li> Create a value set named 'CustType". We need to create the objects (or values) to place inside this set. Click inside 'CustType' and
 		hover the mouse over the 'CustType' contour, at a point a collection of selectable items will pop-up; select the "SetDefObject" item from the pop-up.
 		</li>
-		
+
 		<img src="img/BankSDCreatingCustType.png">
-		
+
 		<li>
-		Give the name 'personal' to the constant object. Create another constant object inside "CustType" and name it 'corporate'. 
-		Finally, create the property edge from 'Customer' to 'CustType' and name it 'cType'. 
-		We need to say that 'CustType' is defined in terms of the things it encloses (symbol &#9711;). Open the properties 
+		Give the name 'personal' to the constant object. Create another constant object inside "CustType" and name it 'corporate'.
+		Finally, create the property edge from 'Customer' to 'CustType' and name it 'cType'.
+		We need to say that 'CustType' is defined in terms of the things it encloses (symbol &#9711;). Open the properties
 		views by doing a right-click on 'CustType'. In the properties view, set the property "Is Def Set" to "true". The symbol &#9711;
 		shows up to the left of the 'CustType' set.
 		</li>
-		
+
 		<img src="img/SDAfterCustTypeAndProp.png">
-		
-		<li> We now need to create the value set for the properties of 'Account'. Create the value set 'AccID'. 
-		Introduce in the diagram a contour that represents the priomitive set of integers by selecting set "Int" from the palette. 
+
+		<li> We now need to create the value set for the properties of 'Account'. Create the value set 'AccID'.
+		Introduce in the diagram a contour that represents the priomitive set of integers by selecting set "Int" from the palette.
 		Create the property edges 'accNo' and 'balance' from 'Account' to 'AccID' and 'Int', respectivelly.
 		</li>
-		<li> Create a value set named 'AccType' to represent the two kinds of accounts. 
-		Place inside this set the objects named 'current' and 'savings'. Create the property edge from 
-		'Account' to 'AccType' named 'aType'. In the properties view of 'AccType', set the property "Is Def Set" 
+		<li> Create a value set named 'AccType' to represent the two kinds of accounts.
+		Place inside this set the objects named 'current' and 'savings'. Create the property edge from
+		'Account' to 'AccType' named 'aType'. In the properties view of 'AccType', set the property "Is Def Set"
 		to 'true'.
 		</li>
-		
+
 		<img src="img/SDAfterAccountProps.png">
 	    </ol>
-	    
+
 	    <p>
-	    We now need to say how the two main concepts of 'Bank, 'Customer and 'Account' are related. This involves defining relation edges. 
+	    We now need to say how the two main concepts of 'Bank, 'Customer and 'Account' are related. This involves defining relation edges.
 	    Here's a video showing how this is done:
         </p>
-        
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/lIogEMJh7WM?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/lIogEMJh7WM?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
-		<p>		
+		<p>
 		<a href="../videos/CreateRelationEdge.mp4">(Download Video)</a>
 		</p>
-		
+
 		Step-by-step instructions are as follows:
 		<ol>
-		<li> The relation between customers and their bank accounts is described in VCL with a <i>relation edge</i> (an association). 
+		<li> The relation between customers and their bank accounts is described in VCL with a <i>relation edge</i> (an association).
 		Place the mouse over the set 'Customer', when the <i>connection handles</i>
 		show up, click on the outgoing arrow and drag it over to the set 'Account'; select the option "Create RelationEdge". This will
-		create a line between the two sets; give it the name 'Holds'. 
+		create a line between the two sets; give it the name 'Holds'.
 		</li>
 		<li>
-		In the properties view of the relation edge, select the value "*" for the property "Target Mult". This says that one customer 
+		In the properties view of the relation edge, select the value "*" for the property "Target Mult". This says that one customer
 		may have many accounts.
 		</li>
 		<ol>
@@ -430,490 +430,490 @@ customer number is to be assigned internally by the system. </td>
         <p> We now need to represent  the invariants of the <i>SimpleBank</i> model. Here's a video on how to this:
         </p>
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/yyMVPbAwkIE?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/yyMVPbAwkIE?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
-		<p>		
+		<p>
 		<a href="../videos/CreateAssertionsOnSD.mp4">(Download Video)</a>
 		</p>
-		
+
 		Step-by-step instructions now how to do this are as follows:
 		<ol>
-		<li> We start by introducing in the SD an invariant that says that customer numbers are unique (requirement R2). From the palette 
-		("Entities" section), select the <i>Assertion</i> item; click in the desired location of the drawing area; 
+		<li> We start by introducing in the SD an invariant that says that customer numbers are unique (requirement R2). From the palette
+		("Entities" section), select the <i>Assertion</i> item; click in the desired location of the drawing area;
 		name it 'CustIdsUnique'. A red marker shows up; this says that the AD describing the invariant has not been defined.
 		</li>
-		
+
 		<img src="img/SDAfterCustIdsUnique.png">
-		
+
 		<li> We now represent in the SD the invariant that says that account identifiers are unique (requirement R3) and the one
 		that says that savings accounts cannot have negative balances (requirement R4). Create two assertions and name them 'AccountIdsUnique'
-		and 'SavingsArePositive'. The invariant 'SavingsArePositive' needs to be defined as local. 
-		 Place the mouse over the set 'Account', and drag the outgoing connector to the assertion to say that the assertion is local to 
-		'Account'. 
+		and 'SavingsArePositive'. The invariant 'SavingsArePositive' needs to be defined as local.
+		 Place the mouse over the set 'Account', and drag the outgoing connector to the assertion to say that the assertion is local to
+		'Account'.
 		</li>
-		
+
 		<img src="img/SDAfterSavingsArePositive.png">
-		
+
 		<li> We now create assertions for the other invariants, corresponding to requirements R5 and R6. These are global invariants.
 		Create the assertions named 'CorporateHaveNoSavings' (requirement R5)  and 'HasCurrentBefSavings' (requirement R6). We also
-		create invariants 'SavingsArePositive2' (to express globally using sets the requirement R4, local assertion 
-		'SavingsArePositive'), 'CorporateHaveNoSavingsQ' (to express R5 using quantifiers), 
+		create invariants 'SavingsArePositive2' (to express globally using sets the requirement R4, local assertion
+		'SavingsArePositive'), 'CorporateHaveNoSavingsQ' (to express R5 using quantifiers),
 		'HasCurrentBefSavingsR' (to express R6 using assertion references) and 'HasCurrentBefSavingsQ' (to express R6 using quantifiers).
 		</li>
-		
+
 		<img src="img/BankSDAfterGblInvariants.png">
-		
+
 		<li> This concludes the SD. Save the diagram. We will create assertion diagrams for the invariants.</li>
 		</ol>
 		</p>
-		
-		
+
+
 		<h1 id="adsavingspos">Assertion Diagram for local invariant <i>SavingsArePositive</i></h1>
-		
+
 		<p> We now create a VCL assertion diagram (AD) to describe the invariant <b>SavingsArePositive</b> of the SD. We will express this as
 		a propositional logic formla expressed visually. Here's a video on how to do this:</p>
-	
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/SB-oFcVtE1M?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/SB-oFcVtE1M?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
 		<p>
 		<a href="../videos/SavingsArePositive.mp4">(Download Video)</a>
 		</p>
-		
+
 		The step-by-step instructions on how to do this are as follows:
 		<ol>
-		<li> Double click on the assertion 'SavingsArePositive' in the VCL SD. A dialogue will show up to ask whether you want to create an AD; 
-		say "Yes". This opens a new panel with the diagram editor for ADs. 
+		<li> Double click on the assertion 'SavingsArePositive' in the VCL SD. A dialogue will show up to ask whether you want to create an AD;
+		say "Yes". This opens a new panel with the diagram editor for ADs.
 		</li>
-		
-		<li> Invariant 'SavingsArePositive' requires that savings accounts have positive balances. This can be expressed as 
-		a logical implication formula: if account is of type savings, its balance must be positive. 
-		Select <i>FormulaNAry</i> from the palette and click on the predicate compartment of the AD or select from the pop-up  that shows up after 
-		hovering the mouse over the predicate compartment. This will create a formula with an implication (the default n-ary operator); 
+
+		<li> Invariant 'SavingsArePositive' requires that savings accounts have positive balances. This can be expressed as
+		a logical implication formula: if account is of type savings, its balance must be positive.
+		Select <i>FormulaNAry</i> from the palette and click on the predicate compartment of the AD or select from the pop-up  that shows up after
+		hovering the mouse over the predicate compartment. This will create a formula with an implication (the default n-ary operator);
 		a red marker will show up indicating that your formula is invalid: you need to provide formulas for the left- and right-hand sides of the implication.
 		</li>
-		
+
 		<img src="img/AD1AfterFImpl.png">
-		
-		<li> We now build an arrows formula for the left-hand side (LHS) of the implication. Hover the mouse over the formula and select 
-		the "ArrowsFormula". This creates a dashed square. Hover the mouse over this square and select "FormulaSourceElem". 
-		This creates another dashed square. By hovering the mouse over this dashed rectangle, a pop-up will appear giving you all the options of 
-		things you can place inside; select "VCL Object" and name it 'aType' to refer to the property of 'Account' with the same name. 
+
+		<li> We now build an arrows formula for the left-hand side (LHS) of the implication. Hover the mouse over the formula and select
+		the "ArrowsFormula". This creates a dashed square. Hover the mouse over this square and select "FormulaSourceElem".
+		This creates another dashed square. By hovering the mouse over this dashed rectangle, a pop-up will appear giving you all the options of
+		things you can place inside; select "VCL Object" and name it 'aType' to refer to the property of 'Account' with the same name.
 		A red marker over the rectangle signals an error: the arrows formulas has no property edges.
 		</li>
-		
+
 		<img src="img/AD1AfterObjAType.png">
-		
+
 		<li> We now create one property edge for the arrows formula. Select "PropEdgePred" from the palette ("Predicates"), and click next
-		to the object 'aType'; alternativelly hover the mouse to the right of at arrows formula dashed rectangle and select "PropEdgePred" from the pop-up. 
+		to the object 'aType'; alternativelly hover the mouse to the right of at arrows formula dashed rectangle and select "PropEdgePred" from the pop-up.
 		Accept the property edge and the equality operator that is shown by pressing enter.</li>
-		
+
 		<img src="img/AD1AfterPropEdgeForAType.png">
-		
-		<li> We now need to associate an object expression with the property edge. Select "ObjectExpression" from the palette and click to the right of the property edge; 
+
+		<li> We now need to associate an object expression with the property edge. Select "ObjectExpression" from the palette and click to the right of the property edge;
 		or hover the mouse to the right of the property edge and select "ObjectExpression" from the pop-up. This will
-		create a rectangle and an arrow from 'aType' to the newly created rectangle. In the expression box, write 'savings' to refer to the item with the 
-		same name from the set 'AccType' defined in the SD. 
-		This concludes the LHS formula of the implication. The red marker says that you still have an invalid formula; the right-hand side (RHS) of the implication is 
+		create a rectangle and an arrow from 'aType' to the newly created rectangle. In the expression box, write 'savings' to refer to the item with the
+		same name from the set 'AccType' defined in the SD.
+		This concludes the LHS formula of the implication. The red marker says that you still have an invalid formula; the right-hand side (RHS) of the implication is
 		still missing.
 		</li>
-		
+
 		<img src="img/AD1AfterLHSF.png">
-		
+
 		<li> We now create the RHS formula of the implication. Follow the same process as above: create an "ArrowsFormula" to be placed on the RHS,
-		followed by a "FormulaSourceElem" and a "VCLObject"; name the rectangle "balance". At this point you may need to enlarge the AD; 
-		select the whole AD by clicking on the AD's name compartment and then enlarge it by dragging on one of the sides until you have an AD that is big enough to fit the whole formula. 
-		Create a property edge, and an object expression. Write "0" on the expression box. Select the property edge; in the properties view, 
+		followed by a "FormulaSourceElem" and a "VCLObject"; name the rectangle "balance". At this point you may need to enlarge the AD;
+		select the whole AD by clicking on the AD's name compartment and then enlarge it by dragging on one of the sides until you have an AD that is big enough to fit the whole formula.
+		Create a property edge, and an object expression. Write "0" on the expression box. Select the property edge; in the properties view,
 		change the operator from "=" to "&#8805". The red marker is cleared, which means that the formula is now valid.
 		</li>
-		
-		<img src="img/BankAccount-SavingsArePositive.png"> 
-		
+
+		<img src="img/BankAccount-SavingsArePositive.png">
+
 		<li>This concludes the AD for the invariant 'SavingsArePositive'. Save the diagram, and go back to the structural diagram.
 		</li>
 		</ol>
-		
+
 		<h1 id="adcustidsunique">VCL Assertion Diagram for global invariant <i>CustIdsUnique</i>: quantifiers</h1>
-		
+
 		<p>
-		We now create a global invariant to say that customer numbers are unique. This can be expressed using a quantified formula of predicate 
-		logic: for any two distinct customers, they must have distinct customer numbers. 
+		We now create a global invariant to say that customer numbers are unique. This can be expressed using a quantified formula of predicate
+		logic: for any two distinct customers, they must have distinct customer numbers.
 		</p>
 		<p>
 		The following gives step-by-step instructions on how to do this:
 		</p>
 		<ol>
-		<li> Double click on the assertion 'CustIdsUnique' in the VCL SD. A dialogue will show up asking whether you want to create an AD. 
-		Say "Yes". A new window with the diagram editor for ADs will open. 
-		<li> Create a "QFormula" in the predicate compartment (by selecting from the palette or from the predicate pop-up). Several error markers 
-		show up saying that you have an invalid formula. Introduce one quantifier in the formula by selecting "QDecl", a dashed box with 
-		the universal quantifier symbol (&#8704;) inside shows up. The error markers say that you have an invalid formula and that there are 
+		<li> Double click on the assertion 'CustIdsUnique' in the VCL SD. A dialogue will show up asking whether you want to create an AD.
+		Say "Yes". A new window with the diagram editor for ADs will open.
+		<li> Create a "QFormula" in the predicate compartment (by selecting from the palette or from the predicate pop-up). Several error markers
+		show up saying that you have an invalid formula. Introduce one quantifier in the formula by selecting "QDecl", a dashed box with
+		the universal quantifier symbol (&#8704;) inside shows up. The error markers say that you have an invalid formula and that there are
 		no variable declarations for the quantified formula.
-		</li>	
+		</li>
 		<img src="img/ADCustIdsUniqueAfterQDecl.png">
 		<li> Introduce a variable declaration by hovering the mouse over the quantifier declaration box and select "DeclObj" from the pop-up.
 		In the yellow rectangle, create two variables named 'c1' and 'c2' (separated by commas) with the type 'Customer'. An error marker will show
 		up at this point saying that a predicate formula for the quantifier is missing.
 		</li>
 		<img src="img/ADCustIdsUniqueAfterQDecl2.png">
-		<li> We can now define the predicate of the quantified formula as an implication: if two objects are different then their customer 
-		numbers must also be different. We define a "FormulaNAry" with two arrow formulas to define a predicate similar to the one built 
-		above ('SavingsArePositive').  
+		<li> We can now define the predicate of the quantified formula as an implication: if two objects are different then their customer
+		numbers must also be different. We define a "FormulaNAry" with two arrow formulas to define a predicate similar to the one built
+		above ('SavingsArePositive').
 		</li>
 		<img src="img/BankCustIdsUnique.png">
 		</ol>
-		
+
 		<h1 id="adaccountidsunique">VCL Assertion Diagram for global invariant <i>AccountIdsUnique</i>: altering an existing AD</h1>
-		
+
 		<p>The invariant 'AccountIdsUnique' is very similar in form to 'CustIdsUnique'. We now build the former by altering the latter.
 		</p>
-		
+
 		<p>The step-by-step instructions on how to do this are as follows:
 		</p>
-		
+
 		<ol>
-		<li> In Eclipse's package explorer select the file "CustIdsUnique.vclad" and do a <i>copy</i> and <i>paste</i>. 
-		A window will show up with a new name for the file you're copying; give it the name "AccoutIdsUnique.vclad". 
-		</li> 
-		<li> Double-click on the assertion 'AccountIdsUnique'. An AD will show up that is exactly the same as 
+		<li> In Eclipse's package explorer select the file "CustIdsUnique.vclad" and do a <i>copy</i> and <i>paste</i>.
+		A window will show up with a new name for the file you're copying; give it the name "AccoutIdsUnique.vclad".
+		</li>
+		<li> Double-click on the assertion 'AccountIdsUnique'. An AD will show up that is exactly the same as
 		'CustIdsUnique'; you need to change the name in this 'AccountIdsUnique' AD so that it applies to accounts instead of customers.
 		</li>
 		<li> In the quantifier declaration change variable names 'c1' and 'c2' for 'a1' and 'a2; change the type name from 'Customer' to 'Account'.
-		In the predicate change 'c1' and 'c2' for 'a1' and 'a2 in the two arrow formulas change the name of the desigantor of the predicate property 
+		In the predicate change 'c1' and 'c2' for 'a1' and 'a2 in the two arrow formulas change the name of the desigantor of the predicate property
 		from 'custNo' to 'accNo'.
 		</li>
 		<img src="img/BankAccountIdsUnique.png">
 		</ol>
-		
-		
+
+
 		<h1 id="adsavingspos2">VCL Assertion Diagram for global invariant <i>SavingsArePositive2</i></h1>
-		
+
 		<p> We now create a VCL AD to describe the invariant 'SavingsArePositive2'. This invariant will say the same thing
-		as the invariant 'SavingsArePositive' defined above (that savings accounts must have positive balances), but it is expressed using sets, 
-		rather than a propositional logic formula. 
+		as the invariant 'SavingsArePositive' defined above (that savings accounts must have positive balances), but it is expressed using sets,
+		rather than a propositional logic formula.
 		</p>
 
-		<p>		
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/Xxw8HTHTmL0?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/Xxw8HTHTmL0?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
 		<p>
 		<a href="../videos/SavingsArePositive2.mp4">(Download Video)</a>
 		</p>
-		
-		
+
+
 		<ol>
-		<li> Double click on the assertion <b>SavingsArePositive2</b> in the VCL SD. A dialogue will show up to ask whether you want to create an AD. 
+		<li> Double click on the assertion <b>SavingsArePositive2</b> in the VCL SD. A dialogue will show up to ask whether you want to create an AD.
 		Say <i>Yes</i>. A new window with the diagram editor for ADs will open. </li>
-		
-		<li> We start by creating a set formula. Select the "SetFormulaDef" item from the palette ("Predicates" group), and click on the 
+
+		<li> We start by creating a set formula. Select the "SetFormulaDef" item from the palette ("Predicates" group), and click on the
 		predicate compartment of the AD; or hover the mouse in the predicate area and select "SetFormulaDef".
 		A set with the symbol  &#9711; will appear on the predicate area; the red marker indicates that the formula is invalid.
 		</li>
-		
-		<img src="img/AD2AfterBlobDef.png"> 
-		
+
+		<img src="img/AD2AfterBlobDef.png">
+
 		<li> Hover the mouse over the set formula and select the "SefDef" (set symbol). This creates a set
-		definition inside the set formula. Hover again the mouse over the inner set and from the available options 
+		definition inside the set formula. Hover again the mouse over the inner set and from the available options
 		select "ConstrainedSet"; name the newly created set 'Account' to refer to the set with the same name defined in the SD. We now need to
 		define a subset of 'Account' using predicate property edges. The red marker says that you have not defined a predicate for the set formula.
 		</li>
-		
-		<img src="img/AD2AfterBlobDef2.png"> 
-		
+
+		<img src="img/AD2AfterBlobDef2.png">
+
 		<li>
 		We define one predicate property edge, emanating from 'Account'; name it 'aType' to refer to the account's property with same name
-		("Designator" field of the properties window). Create an object expression and attach it as a target of the predicate property 
-		edge; write 'savings' inside the box of the object expression. We have just defined the set of savings accounts. 
+		("Designator" field of the properties window). Create an object expression and attach it as a target of the predicate property
+		edge; write 'savings' inside the box of the object expression. We have just defined the set of savings accounts.
 		We still have one red marker indicating that the blob formula is not a valid formula; we'll address that problem later.
 		</li>
-		
-		<img src="img/AD2AfterATypePropEdge.png"> 
-		
-		<li> Create another predicate property edge emanating from 'Account'. Set the "Designator" property to 'balance' to refer to 
+
+		<img src="img/AD2AfterATypePropEdge.png">
+
+		<li> Create another predicate property edge emanating from 'Account'. Set the "Designator" property to 'balance' to refer to
         property of set 'Account' with same name (as defined in SD), and create an object expression for it. Write '0' inside the box of the object expression.
 		 You need to change the operator of this property edge from '=' to '<'. This defines the set of savings accounts with negative balances.
 		</li>
-		 
-		 <img src="img/AD2AfterBalancePropEdge.png"> 
-		 
+
+		 <img src="img/AD2AfterBalancePropEdge.png">
+
 		<li>We finally address the error reported by the red marker by making the set formula definition an actual predicate. From the properties view
 		 of the outer blob (the one with the symbol &#9711; followed by =), set the "shaded" property to "true" (shading says that the set is empty).
-		 This shades the outer blob; the red marker disappears. This finalises our predicate; we've said that the set of savings accounts with 
-		negative balances must be empty. 
+		 This shades the outer blob; the red marker disappears. This finalises our predicate; we've said that the set of savings accounts with
+		negative balances must be empty.
 		</li>
-		
-		<img src="img/BankSavingsArePositive2.png"> 
-		
+
+		<img src="img/BankSavingsArePositive2.png">
+
 		</ol>
-		
+
 		<h1 id="adcorphavenosav">Creating the VCL Assertion Diagram for the global invariant <i>CorporateHaveNoSavings</i></h1>
-		
+
 		<p> We now create the VCL AD for the invariant 'CorporateHaveNoSavings', which says that corporate customers cannot have savings
-		accounts. 
+		accounts.
 		</p>
-		
+
 		<p>Above, AD 'SavingsArePositive2' says that savings accounts cannot have negative balances by saying that the set of
-		savings accounts with negative balances is empty. The same approach is followed for 'CorporateHaveNoSavings': we say that 
+		savings accounts with negative balances is empty. The same approach is followed for 'CorporateHaveNoSavings': we say that
 		the set of corporate customers with savings accounts is empty. This involves referring to the 'Holds' relation edge and applying
-		some relational operators on it using modifier edges. 
+		some relational operators on it using modifier edges.
 		</p>
-		
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/IcP7StNy6Os?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/IcP7StNy6Os?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
 		<p>
 		<a href="../videos/CorporateHaveNoSavings.mp4">(Download Video)</a>
 		</p>
-		
+
 		<ol>
-		<li> Double click on the assertion 'CorporateHaveNoSavings' in the VCL SD. A dialogue will show up to ask whether you want to create an AD. 
-		Say <i>Yes</i>. A new window with the diagram editor for ADs will open. 
+		<li> Double click on the assertion 'CorporateHaveNoSavings' in the VCL SD. A dialogue will show up to ask whether you want to create an AD.
+		Say <i>Yes</i>. A new window with the diagram editor for ADs will open.
 		</li>
-		
+
 		<li> We start by creating a set formula definition. Select the "SetFormulaDef" item from the palette, and click on the predicate compartment
 		(or hover the mouse over the predicate area and select the "SetFormulaDef" option).
 		A set with the symbol &#9711; followed by = will appear on the predicate area. Create a set definition inside the set formula by hovering
 		the mouse and selecting "SetDef". Hover the mouse over the "SetDef" and select "ConstrainedSet" from the available
-		options; give it the name 'Holds' to refer to the relation edge defined in the SD.  One red marker appears to signal the fact that the set 
+		options; give it the name 'Holds' to refer to the relation edge defined in the SD.  One red marker appears to signal the fact that the set
 		formula does not define a predicate.
 		</li>
-		
-		<img src="img/AD3AfterBlobDef.png"> 
-		
-		<li> We now create a <i>domain restriction</i> for the relation edge 'Holds' to restrict the tuples of the relation to  
-		'corporate' customers only. We do this using a <i>property edge modifier</i>. Create a property edge modifier ("PropEdgeMod"> item in the 
-		palette or pop-up) and attach it to the inner set 'Holds'; change the "operarator" in the properties view by selecting "&#9665;". 
-		We need to associate a set expression with the edge modifier. 
-		Select "SetExpressionDef" from the 
+
+		<img src="img/AD3AfterBlobDef.png">
+
+		<li> We now create a <i>domain restriction</i> for the relation edge 'Holds' to restrict the tuples of the relation to
+		'corporate' customers only. We do this using a <i>property edge modifier</i>. Create a property edge modifier ("PropEdgeMod"> item in the
+		palette or pop-up) and attach it to the inner set 'Holds'; change the "operarator" in the properties view by selecting "&#9665;".
+		We need to associate a set expression with the edge modifier.
+		Select "SetExpressionDef" from the
 		palette or pop-up and attach it to the target of the property edge modifier; this draws a dashed square. Hover the mouse over the dashed square and select
-		"SetDef"; this draws another set definition. 
+		"SetDef"; this draws another set definition.
 		</li>
-		
-		<img src="img/AD3AfterPropEdgeModDR.png"> 
-		
-		<li> Create a constrained blob inside the blob definition and name it 'Customer' to refer to the SD set with the same name. 
+
+		<img src="img/AD3AfterPropEdgeModDR.png">
+
+		<li> Create a constrained blob inside the blob definition and name it 'Customer' to refer to the SD set with the same name.
 		</li>
-		
-		
-		<img src="img/AD3AfterCustomerBExp.png"> 
-		
-		<li> The restriction is vacuous. We need to restrict the relation 'Holds' to corporate customers. 
-		To do that, we define a predicate property edge 
-		and attach it to the inner set 'Customer' and we we attach an object expression to the end of the property edge. We enter 'corporate' in the 
+
+
+		<img src="img/AD3AfterCustomerBExp.png">
+
+		<li> The restriction is vacuous. We need to restrict the relation 'Holds' to corporate customers.
+		To do that, we define a predicate property edge
+		and attach it to the inner set 'Customer' and we we attach an object expression to the end of the property edge. We enter 'corporate' in the
 		object expression box and add 'cType' as the designator of the predicate property edge. This inner set defines the set of corporate customers.
  	    The restriction restricts the <i>domain</i> of the relation  'Holds' to corporate customers.
 		</li>
-		
+
 		<img src="img/AD3AfterCustCorp.png">
-		
-		<li> We now restrict the <i>range</i> of 'Holds' to the set of savings accounts. 
-		To do that we create a property edge modifier with the symbol "&#9665;" attached to the inner set 'Holds' and attach a "SetExpressionDef" 
-		to it. Inside the newly created set definition, we create a "SetDef" followed by a "ConstrainedSet". 
+
+		<li> We now restrict the <i>range</i> of 'Holds' to the set of savings accounts.
+		To do that we create a property edge modifier with the symbol "&#9665;" attached to the inner set 'Holds' and attach a "SetExpressionDef"
+		to it. Inside the newly created set definition, we create a "SetDef" followed by a "ConstrainedSet".
 		The inner set should be named 'Account'. Create a property edge predicate
-		for the inner set, and attach it to an object expression; enter 'savings' inside the expression box, and enter 'aType' 
+		for the inner set, and attach it to an object expression; enter 'savings' inside the expression box, and enter 'aType'
 		as the designator of the property edge.
 		</li>
-		
+
 		<img src="img/AD3AfterAccountSavings.png">
-		
+
 		<li>  VCB signals two errors: one saying that the relational operator &#9665; is not correct and another saying that the set formula
-		does not define a predicate. The first error is because &#9665; restricts the domain of 'Holds', which is defined over the set of 
-		customers, but the target set defines a set of accounts. To fix this, we need to change the "operator" of the property edge modifier 
-		in the properties view from &#9665; (domain restriction) to &#9655; (range restriction). 
-		As the range of 'Holds' is defined over the set of accounts the error goes away. 
-		We remove the red marker that remains by shading the outer set to define a predicate. This says that the set of tuples of 'Holds', 
-		restricted on the domain to corporate customers and on the range to savings accounts, must be empty. This effectively says what we want. 
+		does not define a predicate. The first error is because &#9665; restricts the domain of 'Holds', which is defined over the set of
+		customers, but the target set defines a set of accounts. To fix this, we need to change the "operator" of the property edge modifier
+		in the properties view from &#9665; (domain restriction) to &#9655; (range restriction).
+		As the range of 'Holds' is defined over the set of accounts the error goes away.
+		We remove the red marker that remains by shading the outer set to define a predicate. This says that the set of tuples of 'Holds',
+		restricted on the domain to corporate customers and on the range to savings accounts, must be empty. This effectively says what we want.
 		</li>
-		
+
 		<img src="img/BankCorporateHaveNoSavings.png">
-		
+
 		<li>This concludes the AD. Save the diagram, and go back to the structural diagram.</li>
 		</ol>
-		
+
 		<h1 id="adhascurrbefsavings">Creating the VCL Assertion Diagram for the global invariant <i>HasCurrentBefSavings</i></h1>
-		
+
 		<p> We now create the VCL AD for the invariant <b>HasCurrentBefSavings</b>, which says that customers must have a current account
-		before opening a savings account. We formulate this by saying that the set of customers with savings accounts must be a subset of the set of 
+		before opening a savings account. We formulate this by saying that the set of customers with savings accounts must be a subset of the set of
 		customers with current accounts. This involves defining the relevant sets in separate assertion diagrams.</p>
-		
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/_bLjH_AXbcs?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/_bLjH_AXbcs?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
 		<p>
 		<a href="../videos/HasCurrentBefSavings.mp4">(Download Video)</a>
 		</p>
 		<ol>
-		<li> Double click on the assertion <b>HasCurrentBefSavings</b> in the VCL SD. A dialogue will show up to ask whether you want to create an AD. 
-		Say <i>Yes</i>. A new window with the diagram editor for ADs will open. 
+		<li> Double click on the assertion <b>HasCurrentBefSavings</b> in the VCL SD. A dialogue will show up to ask whether you want to create an AD.
+		Say <i>Yes</i>. A new window with the diagram editor for ADs will open.
 		</li>
-		
-		<li> Introduce two assertion references in the declarations compartment. To do this, hover the mouse over the declaration compartment and 
-		select <i>DeclAssertionRef</i>. Name the assertions: <b>CustsWithCurrent</b> and <b>CustsWithSavings</b>. 
-		These are the diagrams that will define the set customers with current accounts and the set of customers with savings accounts. 
+
+		<li> Introduce two assertion references in the declarations compartment. To do this, hover the mouse over the declaration compartment and
+		select <i>DeclAssertionRef</i>. Name the assertions: <b>CustsWithCurrent</b> and <b>CustsWithSavings</b>.
+		These are the diagrams that will define the set customers with current accounts and the set of customers with savings accounts.
 		Two red markers appear to say that the assertions diagrams corresponding to the references are not defined.
 		</li>
-		
+
 		<img src="img/AD4AfterAssertionRefs.png">
-		
-		<li> Double click on the assertion <b>CustsWithCurrent</b>. A dialogue will show up to ask whether you want to create an AD. 
+
+		<li> Double click on the assertion <b>CustsWithCurrent</b>. A dialogue will show up to ask whether you want to create an AD.
 		Say <i>Yes</i>. A new window with the diagram editor for ADs will open. We start by declaring a set. Hover the mouse over the
-		declarations compartment and select <i>DeclBlob</i>. Name it <b>custsCurr</b> and enter 
+		declarations compartment and select <i>DeclBlob</i>. Name it <b>custsCurr</b> and enter
 		<b>Customer</b> for the type.
 		</li>
-		
+
 		<img src="img/ADCustsWithCurrentAfterDecl.png">
-		
+
 		<li> Place a <i>BlobFormulaDef</i> inside the predicate compartment and introduce a <i>BlobDef</i> inside. Create a <i>ConstrainedBlob</i>
-		inside the  <i>BlobDef</i> and name it <b>Holds</b> to refer to the relation edge defined in the SD. 
+		inside the  <i>BlobDef</i> and name it <b>Holds</b> to refer to the relation edge defined in the SD.
 		Attach a property edge modifier to the <b>Holds</b> set, create a <i>BlobExpressionDef</i> for the target of the edge, and create a
 		<i>BlobDef</i> inside the <i>BlobExpressionDef</i>. The red marker indicates that the the formula is invalid.
 		</li>
-		
+
 		<img src="img/ADCustsWithCurrentAfterBlobExpDef.png">
-		
+
 		<li> Inside the inner <i>BlobDef</i>, create a <i>ConstrainedBlob</i> named <b>Account</b>. Attach
 		a predicate property edge to this blob, and enter <b>aType</b> as the designator. Attach an object expression to the target
 		of the edge and enter <b>current</b> inside the object expression box. We now have two red markers, which say that there is something
 		wrong with the property edge modifier and that the blob formula def does not define a predicate.
 		</li>
-		
+
 		<img src="img/ADCustsWithCurrentAfterCntBlob.png">
-		
+
 		<li> We remove the first red marker by changing the <i>operator</i> of the property edge (in the properties view) from &#9665; (the domain restriction symbol) to &#9655; (the range restriction symbol).
-		We are interested in restricting the range of the relation Holds. We now enter <b>CustsCurr</b> as the name of the outer blob (in field <i>Bid</i>). 
+		We are interested in restricting the range of the relation Holds. We now enter <b>CustsCurr</b> as the name of the outer blob (in field <i>Bid</i>).
 		But we still get a type error: type of <b>CustsCurr</b> (Pow <b>Customer</b>) does not match that of the blob definition. Actually, this is because
-		we are not interested in taking the whole set, but the domain of the restricted relation. So we select the blob definition that defines the restriction of <b>Holds</b> 
+		we are not interested in taking the whole set, but the domain of the restricted relation. So we select the blob definition that defines the restriction of <b>Holds</b>
 		and select the operator &#8592; to retrieve the domain of the restricted relation.
 		</li>
-		
-		<img src="img/BankCustsWithCurrent.png"> 
-		
-		<li> Go back to the AD of <b>HasCurrentBefSavings</b>. The red marker over the assertion reference <b>CustsWithCurrent</b> should not be 
-		visible any longer. Double-click on <b>CustsWithSavings</b> and start building this AD, which is very similar to <b>CustsWithCurrent</b>; 
+
+		<img src="img/BankCustsWithCurrent.png">
+
+		<li> Go back to the AD of <b>HasCurrentBefSavings</b>. The red marker over the assertion reference <b>CustsWithCurrent</b> should not be
+		visible any longer. Double-click on <b>CustsWithSavings</b> and start building this AD, which is very similar to <b>CustsWithCurrent</b>;
 		the only difference is that we select all savings accounts instead all current accounts. The resulting AD is as follows:
 		</li>
-		
+
 		<img src="img/BankCustsWithSavings.png">
-		
-		<li> We now need to say that the set <b>custSavs</b> (defined in AD <b>CustsWithSavings</b>) is a subset of <b>custCurr</b> 
+
+		<li> We now need to say that the set <b>custSavs</b> (defined in AD <b>CustsWithSavings</b>) is a subset of <b>custCurr</b>
 		(defined in AD <b>CustsWithCurrent</b>). We do this by selecting
-		the <i>BlobFormulaSubset</i> item in the palette and then placing it in the predicate area; name it <b>custCurr</b>. The red marker indicates 
-		that an inside blob is missing. In the palette, select the item <i>BlobExpressionId</i> and place it inside the blob <b>custCurr</b> on the 
+		the <i>BlobFormulaSubset</i> item in the palette and then placing it in the predicate area; name it <b>custCurr</b>. The red marker indicates
+		that an inside blob is missing. In the palette, select the item <i>BlobExpressionId</i> and place it inside the blob <b>custCurr</b> on the
 		predicate area; name it <b>custSavs</b>. The red marker disappears; the formula is now valid.
 		</li>
-		<img src="img/BankHasCurrentBefSavings.png"> 
-		
+		<img src="img/BankHasCurrentBefSavings.png">
+
 		<li> This completes the AD. Don't forget to save!</li>
 		</ol>
-		
+
 		<h1 id="vclbd">Building the Behaviour Diagram</h1>
-		
-		We now create the VCL behaviour diagram to identify the behavioural units of the package <b>Bank</b>. 
-		
+
+		We now create the VCL behaviour diagram to identify the behavioural units of the package <b>Bank</b>.
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/o-ywx39SO8I?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/o-ywx39SO8I?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		<p>
 		<p>
 		<a href="../videos/BuildingTheBehaviourDiagram.mp4">(Download Video)</a>
 		</p>
-		
+
 		<ol>
 		<li> Double click on the behaviour diagram in Eclipse's package explorer (file 'Bank.vclbd'). An empty behaviour diagram should open.
 		</li>
-		
-		<li> We start by creating some local operations. Select <i>BDSet</i> from the Palette (<i>Entities</i>) and click again on the canvas to 
+
+		<li> We start by creating some local operations. Select <i>BDSet</i> from the Palette (<i>Entities</i>) and click again on the canvas to
 		introduce the set; name it <b>Customer</b>.
 		</li>
-		
+
 		<img src="img/BankBDStep1.png">
-		
+
 		<li> The red marker says that no operations have been defined for <b>Customer</b>. The next step is to define an operation.
-		Enlarge the set <b>Customer</b> so that you can place operations inside. Create on the contract icon of the palette (<i>UpdateOp</i>) 
-		and then click again inside <b>Customer</b>; name the contract <b>New</b>. At this point, there is a red marker 
-		on the contract saying that a local operation must have a local kind. Select the contract; on the properties view select <i>New</i> for 
+		Enlarge the set <b>Customer</b> so that you can place operations inside. Create on the contract icon of the palette (<i>UpdateOp</i>)
+		and then click again inside <b>Customer</b>; name the contract <b>New</b>. At this point, there is a red marker
+		on the contract saying that a local operation must have a local kind. Select the contract; on the properties view select <i>New</i> for
 		the property <i>kind</i>, which indicates this is a constructor (or new operation).
 		</li>
-		
+
 		<p><img src="img/BankBDStep2.png"></p>
-		
-		<li> Follow the same process, to create the local update operations of set <b>Account</b>, namely: <b>New</b> (of kind New), 
-		<b>Deposit</b> (of kind Update), <b>Withdraw</b> (of kind Update) and <b>Delete</b> (of kind Delete). 
+
+		<li> Follow the same process, to create the local update operations of set <b>Account</b>, namely: <b>New</b> (of kind New),
+		<b>Deposit</b> (of kind Update), <b>Withdraw</b> (of kind Update) and <b>Delete</b> (of kind Delete).
 		</li>
-		
+
 		<img src="img/BankBDStep3.png">
-		
-		<li> Add the observe operation <b>GetBalance</b> of set <b>Account</b>. Click on the assertion icon of the palette (item <i>ObserveOp</i>) 
-		and then click again inside the set <b>Account</b>; name it <i>GetBalance</i>. 
+
+		<li> Add the observe operation <b>GetBalance</b> of set <b>Account</b>. Click on the assertion icon of the palette (item <i>ObserveOp</i>)
+		and then click again inside the set <b>Account</b>; name it <i>GetBalance</i>.
 		</li>
-		
+
 		<img src="img/BankBDStep4.png">
-		
-		
+
+
 		<li> We now create the global operations. The update operations are: <i>CreateCustomer</i>, <i>OpenAccount</i>, <i>AccDeposit</i>,
 		<i>AccWithdraw</i> and <i>AccDelete</i>. The observe operations are:  <i>AccGetBalance</i>, <i>GetAccsInDebt</i> and <i>GetCustAccs</i>.
 		</li>
-		
+
 		<img src="img/BankBD.png">
-		
+
 		</ol>
-		
+
 		<h1 id="vcl-lops">Describing the Local Operations</h1>
-		
+
 		We now create contract and assertion diagrams for the local operations of <b>Customer</b> and <b>Account</b>.
-		
+
 		<p>
-		<iframe width="560" height="315" src="http://www.youtube.com/embed/Y5fKUoG1M0Y?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/Y5fKUoG1M0Y?rel=0&vq=hd720" frameborder="0" allowfullscreen></iframe>
 		</p>
 		<p>
 		<a href="../videos/DescribingLocalOperations.mp4">(Download Video)</a>
 		</p>
-		
+
 		<ol>
-		<li> On the BD, double-click on the operation <b>New</b> of set <i>Customer</i>. You'll be asked whether you want to create a 
+		<li> On the BD, double-click on the operation <b>New</b> of set <i>Customer</i>. You'll be asked whether you want to create a
 		new contract diagram for this operation; say <i>Yes</i>.
-		</li> 
-		
+		</li>
+
 		<img src="img/Customer_NewStep1.png">
-		
-		<li> We create a variable to hold the newly created object. In the declarations section of the palette, select the <i>New Object</i> item, and then 
+
+		<li> We create a variable to hold the newly created object. In the declarations section of the palette, select the <i>New Object</i> item, and then
 		click on the declarations compartment to place a variable declaration for the new object. Name it <b>c!</b>; the type should be <b>Customer</b>.
 		</li>
-		
+
 		<img src="img/Customer_NewStep2.png">
-		
+
 		<li> Create object variables for the inputs to the operations. Hover the mouse over the declarations compartment and select the object
 		icon (<i>DeclObj</i>). Define variables for
 		the inputs <b>cNo?</b> of type <b>CustID</b>, <b>name?</b> of type <b>Name</b>, <b>addr?</b> of type <b>Address</b> and <b>cType?</b>
-		of type <b>CustType</b>. 
+		of type <b>CustType</b>.
 		</li>
-		
+
 		<img src="img/Customer_NewStep3.png">
-		
-		<li>We now define the contract's post-condition by describing the state of the newly created object. 
-		This is done by creating <i>action formulas</i> made of a source and a target. Select the item <i>action formula</i> from the 
-		<i>Predicates</i> section of the palette and place it on the post-condition compartment. Then Hover the mouse over 
-		the created dashed square and select the item <i>FormulaSourceElem</i>. Hover the mouse over the created dashed square 
-		and select the object icon (<i>VCLObject</i>); give the name <b>custNo</b> to the object. 
+
+		<li>We now define the contract's post-condition by describing the state of the newly created object.
+		This is done by creating <i>action formulas</i> made of a source and a target. Select the item <i>action formula</i> from the
+		<i>Predicates</i> section of the palette and place it on the post-condition compartment. Then Hover the mouse over
+		the created dashed square and select the item <i>FormulaSourceElem</i>. Hover the mouse over the created dashed square
+		and select the object icon (<i>VCLObject</i>); give the name <b>custNo</b> to the object.
 		Then introduce predicate edge for <b>custNo</b> connected to a <i>ObjectExpression</i>; enter <b>cNo?</b>
-		in the object expression box. This formula assigns the <b>custNo</b> property of the newly created object the value 
+		in the object expression box. This formula assigns the <b>custNo</b> property of the newly created object the value
 		of the input <b>cNo?</b>.
 		</li>
-		
+
 		<img src="img/Customer_NewStep4.png">
-		
-		<li> Add more action formulas following the previous step to describe the initial state of the remaining properties of <b>Customer</b>. The property 
+
+		<li> Add more action formulas following the previous step to describe the initial state of the remaining properties of <b>Customer</b>. The property
 		<b>name</b> should be assigned to <b>name?</b>, <b>address</b> to <b>address?</b> and <b>cType</b> to <b>cType?</b>.</li>
 		<p><img src="img/BankCustomer_New.png"></p>
-		<li> Following the process defined above for the operation <b>New</b> of <b>Customer</b>, we define the operation <b>New</b> of <b>Account</b>. 
+		<li> Following the process defined above for the operation <b>New</b> of <b>Customer</b>, we define the operation <b>New</b> of <b>Account</b>.
 		This results in the following diagram:</li>
-		
+
 		<p><img src="img/BankAccount-New.png"></p>
-		
-		<li> The CDs of operations deposit and withdraw of <b>Account</b> declare an object input named <b>amount</b> of type <b>Nat</b>, and have 
+
+		<li> The CDs of operations deposit and withdraw of <b>Account</b> declare an object input named <b>amount</b> of type <b>Nat</b>, and have
 		an action formula on the post-condition to set the new value of the property <b>balance</b>.</li>
 		<p><img src="img/BankAccount_Deposit.png"></p>
 		<p><img src="img/BankAccount_Withdraw.png"></p>
-		<li> The operation <b>Delete</b> of <b>Account</b> is defined through a AD. The AD defines in the predicate an arrows formula 
+		<li> The operation <b>Delete</b> of <b>Account</b> is defined through a AD. The AD defines in the predicate an arrows formula
 		to say that an account object may be deleted provided the property <b>balance</b> has the value <b>0</b>.
 		<p><img src="img/BankAccount_Delete.png"></p>
 		<li> The AD of the observe operation <b>GetBalance</b> of <b>Account</b> introduces an output  called <b>a!</b> (to yield the account's balance)
@@ -921,136 +921,136 @@ customer number is to be assigned internally by the system. </td>
 		</li>
 		<p><img src="img/BankAccount_GetBalance.png"></p>
 		</ol>
-		
+
 		<h1 id="vcl-gbl-ops">Describing the Global Update Operations</h1>
-		
+
 		We now create contract and assertion diagrams for the global operations of the package <b>Bank</b>:
 		<ol>
-		<li> On the BD, double-click on the operation <b>CreateCustomer</b>. You'll be asked whether you want to create a 
-		new contract diagram for this operation; say <i>Yes</i>. 
+		<li> On the BD, double-click on the operation <b>CreateCustomer</b>. You'll be asked whether you want to create a
+		new contract diagram for this operation; say <i>Yes</i>.
 		</li>
-		
-		<li>This operation declares three inputs: <b>name?</b> of type 
-		<b>Name</b>, <b>address?</b> of type <b>Address</b>, and <b>cType?</b> of type <b>CustType</b>. 
-		It also includes references to one contract and one assertion. To create the reference to the contract, hover the mouse 
-		over the declarations compartment and select the contract icon (<i>DeclContractRef</i> item); give it the name <b>New</b>; 
-		on the <i>Origin</i> field of the properties window 
-		enter the name <b>Customer</b>; this refers to contract <b>New</b> of set <b>Customer</b> that creates new customer objects. 
-		To create the assertion reference, hover the mouse over the declarations compartment and select the assertion icon 
-		(<i>DeclAssertionRef</i>), then name it <b>IsDistinctCustNo</b>; this is to hold a pre-condition that makes sure that the 
-		customer number to be assigned to the new customer is unique. This CD has a pre-condition. 
+
+		<li>This operation declares three inputs: <b>name?</b> of type
+		<b>Name</b>, <b>address?</b> of type <b>Address</b>, and <b>cType?</b> of type <b>CustType</b>.
+		It also includes references to one contract and one assertion. To create the reference to the contract, hover the mouse
+		over the declarations compartment and select the contract icon (<i>DeclContractRef</i> item); give it the name <b>New</b>;
+		on the <i>Origin</i> field of the properties window
+		enter the name <b>Customer</b>; this refers to contract <b>New</b> of set <b>Customer</b> that creates new customer objects.
+		To create the assertion reference, hover the mouse over the declarations compartment and select the assertion icon
+		(<i>DeclAssertionRef</i>), then name it <b>IsDistinctCustNo</b>; this is to hold a pre-condition that makes sure that the
+		customer number to be assigned to the new customer is unique. This CD has a pre-condition.
 		We say that the input <b>cNo?</b> must belong to the set of customer identifiers (<b>CustID</b>).
 		</li>
-		
+
 		<img src="img/BankCreateCustomer.png">
-		
-		<li> The operation <b>OpenAccount</b> is defined similarly. We start by defining the inputs required from the outside world: 
+
+		<li> The operation <b>OpenAccount</b> is defined similarly. We start by defining the inputs required from the outside world:
 		<b>aType?</b> and <b>cNo?</b>. In addition, we include two assertion references called <b>GetCustomerGivenCustNo</b> (to retrieve the
 		customer object associated with <b>cNo?</b>) and <b>IsDistinctAccNo</b> (to ensure the uniqueness of the account number of the new account ).
 		We include two contract references to the operation <b>New</b> of <b>Account</b>
 		and to the operation <b>HoldsAddNew</b>. It also includes a pre-condition to say that the input <b>accNo?</b> of <b>Account.New</b>
 		belongs to the set <b>AccID</b>.
 		</li>
-		
+
 		<img src="img/BankOpenAccount.png">
-		
-		<li> The assertion <b>GetCustomerGivenCustNo</b> has not been defined. Double click on it to define it. The AD declares two 
+
+		<li> The assertion <b>GetCustomerGivenCustNo</b> has not been defined. Double click on it to define it. The AD declares two
 		variables <b>cNo?</b> of type <b>CustID</b> and <b>c!</b> of type <b>Customer</b>. The output <b>c!</b> holds the customer object corresponding
-		to the customer's number (<b>cNo?</b>). The predicate of AD says that <b>c!</b> belongs to the set of customers that have 
+		to the customer's number (<b>cNo?</b>). The predicate of AD says that <b>c!</b> belongs to the set of customers that have
 		<b>cNo?</b> as customer number.
 		</li>
-		
+
 		<img src="img/BankGetCustomerGivenCustNo.png">
-		
-		<li> The operation <b>Account.New</b> is defined above, but the operation <b>Holds.AddNew</b> has not been defined yet. We double click 
+
+		<li> The operation <b>Account.New</b> is defined above, but the operation <b>Holds.AddNew</b> has not been defined yet. We double click
 		on the contract reference to this operation to define it. You'll be asked whether you want to create a new contract diagram, say <i>Yes</i>.
 		Declare two inputs: <b>a?</b> of type <b>Account</b> and <b>c?</b> of type <b>Customer</b>. In the post-condition, declare an action formula
-		that the sets the value of <b>Holds</b> (the relation edge) to a blob expression defined as the union of <b>Holds</b> (in the before-state) and 
+		that the sets the value of <b>Holds</b> (the relation edge) to a blob expression defined as the union of <b>Holds</b> (in the before-state) and
 		a blob extension made of the pair (a?, c?).
 		</li>
 		<img src="img/BankHoldsAddNew.png">
-		
-		<li> Now that <b>Holds.AddNew</b> is defined we go back to the CD of <b>OpenAccount</b>. 
-		We define a renaming of <b>Holds.AddNew</b> in the renaming field of the properties window, to say that the input <b>a?</b> of 
+
+		<li> Now that <b>Holds.AddNew</b> is defined we go back to the CD of <b>OpenAccount</b>.
+		We define a renaming of <b>Holds.AddNew</b> in the renaming field of the properties window, to say that the input <b>a?</b> of
 		<b>Holds.AddNew</b> becomes the output <b>a!</b> from <b>Account.New</b>.</li>
-		
+
 		<p><img src="img/BankOpenAccount.png"></p>
-		
+
 		<li> The CDs of operations <b>AccDeposit</b> and <b>AccWithdraw</b> declare an input <b>aNo?</b> of type <b>AccId</b> (to represent
-		the account's number from which to deposit or withdraw some amount), and they include references to the assertion 
-		<b>GetAccountGivenAccNo</b> and the local contracts, which include an operation call on the object <b>a!</b> (property <b>call object</b>). In this case the contract 
-		interface is also imported (symbol ↑) so that the input <b>amount?</b> of local contracts <b>Deposit</b> and <b>Withdraw</b> is also available 
+		the account's number from which to deposit or withdraw some amount), and they include references to the assertion
+		<b>GetAccountGivenAccNo</b> and the local contracts, which include an operation call on the object <b>a!</b> (property <b>call object</b>). In this case the contract
+		interface is also imported (symbol ↑) so that the input <b>amount?</b> of local contracts <b>Deposit</b> and <b>Withdraw</b> is also available
 		in the global contract (property <b>import</b> is set to true).
 		</li>
-		
+
 		<img src="img/BankAccDeposit.png">
 		<img src="img/BankAccWithdraw.png">
-		   
-		<li> The imported assertion <b>GetAccountGivenAccNo</b> has not been defined. Double click on it to define it. The AD declares two 
+
+		<li> The imported assertion <b>GetAccountGivenAccNo</b> has not been defined. Double click on it to define it. The AD declares two
 		variables <b>aNo?</b> of type <b>AccId</b> and <b>a!</b> of type <b>Account</b>. The output <b>a!</b> holds the account object corresponding
 		to the account's number. The predicate of AD says that <b>a!</b> belongs to the set of accounts that have <b>aNo?</b> as account number.
 		</li>
-		
+
 		<p><img src="img/BankGetAccountGivenAccNo.png"></p>
-		
-		<li> The CD of the operation <b>AccDelete</b> declares an input <b>aNo?</b> of type <b>AccId</b>, and includes references to 
-		the assertion <b>GetAccountGivenAccNo</b>,  the local contract <b>Delete</b> of <b>Account</b> (through the object <b>a!</b>), 
-		and the contract <b>HoldsDelGivenAcc</b>, which includes a renaming (the input <b>a?</b> is renamed to  <b>a!</b>). 
-		
+
+		<li> The CD of the operation <b>AccDelete</b> declares an input <b>aNo?</b> of type <b>AccId</b>, and includes references to
+		the assertion <b>GetAccountGivenAccNo</b>,  the local contract <b>Delete</b> of <b>Account</b> (through the object <b>a!</b>),
+		and the contract <b>HoldsDelGivenAcc</b>, which includes a renaming (the input <b>a?</b> is renamed to  <b>a!</b>).
+
 		</li>
-		<p><img src="img/BankAccDelete.png"></p>	
-		
-		<li> The operation <b>HoldsDelGivenAcc</b> has not been defined. We double-click on it to define it. The CD declares an input 
+		<p><img src="img/BankAccDelete.png"></p>
+
+		<li> The operation <b>HoldsDelGivenAcc</b> has not been defined. We double-click on it to define it. The CD declares an input
 		<b>a?</b> of type <b>Account</b>. The post-condition changes the state of the relation <b>Holds</b>: using a property edge modifier of type
 		range subtraction (symbol &#8998;), we delete all tuples (or pairs) that include the object <b>a?</b>.
 		</li>
-		<p><img src="img/BankHoldsDelGivenAcc.png"></p>	
+		<p><img src="img/BankHoldsDelGivenAcc.png"></p>
 		</ol>
-		
+
 		<h1 id="vcl-gbl-queries">Describing the Global Observe Operations</h1>
-		
+
 		<p> The BD of package <b>Bank</b> defines three global operations: <b>AccGetBalance</b>, <b>GetAccsInDebt</b> and <b>GetCustAccs</b>.
 		They are defined as follows.
 		</p>
-		
+
 		<ol>
-		<li> In the BD, double-click on the assertion <b>AccGetBalance</b> to create an AD for it. We start by declaring an input object 
-		<b>aNo?</b> of type <b>AccId</b> to hold the number of the account we are interested in; 
+		<li> In the BD, double-click on the assertion <b>AccGetBalance</b> to create an AD for it. We start by declaring an input object
+		<b>aNo?</b> of type <b>AccId</b> to hold the number of the account we are interested in;
 		select <i>DeclObj</i> from the palette and enter its name and type  (field <i>DTy</i>). We create assertion references
-		(palette item <i>DeclAssertionRef</i>) to includes references to 
+		(palette item <i>DeclAssertionRef</i>) to includes references to
 		the global <b>GetAccountGivenAccNo</b>, and the local <b>GetBalance</b> of <b>Account</b>. The assertion <b>GetBalance</b>
-		is imported through a calling object (through the object <b>a!</b>; field <i>Call Obj</i>), and it is interface-imported 
+		is imported through a calling object (through the object <b>a!</b>; field <i>Call Obj</i>), and it is interface-imported
 		(property <b>Import</b> is set to <i>true</i>).
 		</li>
 		<p><img src="img/BankAccGetBalance.png"></p>
-		
+
 		<li> We start building the AD of the operation <b>GetAccsInDebt</b> by declaring the set of account objects that is going to be outputted.
-		We select <i>DeclBlob</i> from the palette and click on the declarations compartment to create one; we name it <b>accs!</b> 
-		and give it the type <b>Account</b> (field <i>DTy</i>). This introduces a set that is going to be outputted. 
-		In the predicate, 
-		this output is set (through a blob formula definition) to the set of accounts whose balance is less than 0. 
+		We select <i>DeclBlob</i> from the palette and click on the declarations compartment to create one; we name it <b>accs!</b>
+		and give it the type <b>Account</b> (field <i>DTy</i>). This introduces a set that is going to be outputted.
+		In the predicate,
+		this output is set (through a blob formula definition) to the set of accounts whose balance is less than 0.
 		</li>
-		<li> The AD of the operation 
-		<b>getCustAccs</b> declares an input object <b>cNo?</b> of type <b>CustID</b> to hold the customer we're interested in and 		
-		and an output blob <b>accs!</b> of type <b>Account</b>. We introduce an assertion reference to <b>GetCustomerGivenCustNo</b> to 
-		retrieve the customer object associated to <b>cNo?</b>; this results in the output <b>c!</b>. The predicate builds the set of accounts for 
-		the customer whose number is <b>cNo?</b>, by taking the range  
+		<li> The AD of the operation
+		<b>getCustAccs</b> declares an input object <b>cNo?</b> of type <b>CustID</b> to hold the customer we're interested in and
+		and an output blob <b>accs!</b> of type <b>Account</b>. We introduce an assertion reference to <b>GetCustomerGivenCustNo</b> to
+		retrieve the customer object associated to <b>cNo?</b>; this results in the output <b>c!</b>. The predicate builds the set of accounts for
+		the customer whose number is <b>cNo?</b>, by taking the range
 		of the constrained relation <b>Holds</b> (constrained to include the customer object <b>c!</b>). The range is specified by selecting the
 		operator &#8594; (the range operator) in the outer blob (field <i>Bl Op</i>).
 		</li>
 		<p><img src="img/BankGetAccsInDebt.png">
 		<img src="img/BankGetCustAccs.png"></p>
 		</ol>
-		
+
 	 	<h1 id="genZ">Generating Z from the VCL diagrams</h1>
 	 	<p> We now generate a Z specification from the VCL diagrams: </p>
 	 	<ul>
-		<li> In the VCL SD of <i>SimpleBank</i>, press the Z button. After a while, the Z specification will show up under the <i>SimpleBank</i> 
-		folder on the project explorer. You can see the latex of the generated Z, or a pdf of the generated Z specification (generated from the latex). 
+		<li> In the VCL SD of <i>SimpleBank</i>, press the Z button. After a while, the Z specification will show up under the <i>SimpleBank</i>
+		folder on the project explorer. You can see the latex of the generated Z, or a pdf of the generated Z specification (generated from the latex).
 		The generated Z specification is typechecked using the <a href="http://czt.sourceforge.net/">CZT typechecker.</a> </li>
 		<li>The generated Z specification for this VCL model can be found <a href="SimpleBank.pdf"> here </a>.
 		</ul>
-		
+
 		<h1 id="refs">References</h1>
 		<ol>
 		<li id="rvcl-dbc"> Nuno Am&aacute;lio, Pierre Kelsen. <a href="../doc/vcl-dbc.pdf">Modular Design by Contract Visually and Formally using VCL</a>.
@@ -1064,7 +1064,7 @@ customer number is to be assigned internally by the system. </td>
     	<li id="phdThesis"> Nuno Am&aacute;lio. Generative frameworks for rigorous model-driven development. Ph.D. thesis, Dept. Computer Science, Univ. of York, UK (2007).</li>
     	</ol>
 	</div>
-    
+
 	<div id="footer">&copy; 2010-2011 University of Luxembourg<br>
 	  All rights reserved</div>
 </body>
