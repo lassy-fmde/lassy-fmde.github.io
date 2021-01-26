@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Democles</title>
+	<link rel="stylesheet" href="css/reset.css" type="text/css">
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<meta name="keywords" content="democles, declarative, executable, models, modeling, EP-models, software complexity, object-oriented, object-based, eclipse, java, UML, visual programming, coupling">
+	<meta name="verify-v1" content="tf6XPBBrhszOwhkEZ0H9cW0usp8tjGBrXbfiHu0R6M8=">
+	<script src="jslib/prototype.js" type="text/javascript"></script>
+	<script src="jslib/scriptaculous.js" type="text/javascript"></script>
+	<script src="js/animation.js" type="text/javascript"></script>
+</head>
+<body id="index" onLoad="makeSlider.delay(5.0, 'sliders');">
+
+	<img id="unilogo" src="images/uni-logo.png">
+	<img id="lassylogo" src="images/lassy-logo.png">
+	<div id="sliders">
+		<img src="images/screenshot.png" style="display: none;">
+		<img src="images/slider1.png" style="display: none;">
+		<img src="images/slider2.png" style="display: none;">
+		<img src="images/slider3.png" style="display: none;">
+		<img src="images/slider4.png" style="display: none;">
+	</div>
+	<img id="democleslogo" src="images/democles-logo-with-linebreak.png">
+
+	<div id="navigationbar">
+		<ul id="navigation">
+			<li id="selected"><a href="index.html">Home</a></li>
+			<li><a href="screenshots.html">Screenshots</a></li>
+			<li><a href="documentation.html">Documentation</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="download.html">Download</a></li>
+		</ul>
+    </div>
+
+	<div id="content">
+	<div id="gettingstarted">
+		<h1>Getting Started</h1>
+		<ol>
+			<li><a href="screenshots.html">View Screenshots</a></li>
+			<li><a href="download.html">Download/Install</a></li>
+		</ol>
+	</div>
+
+    <div id="news">
+		<h1>About</h1>
+		<p>A goal of model-driven development is the generation of the
+		full implementation of a system based on a precise description of
+		a platform-independent model. Such a description
+		must accurately specify the static structure as well as the
+		dynamic behavior of the system. EP is a modeling language that supports this approach to software development.</p>
+		<p>The DEMOCLES tool offers a
+		declarative approach to specifying an executable
+		platform-independent model (based on the EP-language). It improves on traditional approaches
+		that are imperative in nature (e.g., action languages) or that are only
+		applicable in particular cases (e.g., state charts).
+		</p>		
+        <h1>News</h1>
+		<h2>20-Sep-2011: Generation of code for Android and iPhone and The Mobile Library Experiment</h2>
+		<p> We provide an experiment illustrating our approach to code generation based on templates. 	
+		You can run the experiment, which takes a sample EP model and generates both Android and iPhone applications from it, from here: 
+        <br><br>
+        <a href="documentation/mobilelibrary/">The Mobile Library Experiment</a>.
+        <br><br>
+        </p>
+		<p>
+		<h2>18-Jan-2011: Model Decomposition plugin available</h2>
+		<p>Democles introduces a new feature for decomposing EP models.
+		The basic idea is to subdivide EP models into smaller sub-models with the property that
+		these sub-models are valid EP models, too.  Compared to the original EP model, the
+		sub-models are smaller and less complex. They can be viewed within Democles and be
+		understood following the EP semantics. 
+		</p>
+		
+		<p>This new feature is provided by an independent plugin that implements a generic
+		model decomposition technique. Democles is configured so that
+		the model decomposition plugin is automatically included.
+		You can also install the model decomposition plugin on its own, and use it to
+		decompose models of any Ecore metamodels.
+		</p>
+		
+		<p>A paper reporting the theory of the generic model decomposition technique and
+		its application in model comprehension is accepted for publication in the
+		proceedings of <a href="http://www.lsi.upc.edu/~orejas/FASE.html">FASE'11</a>. The companion
+		technical report gives more details: <a href="http://democles.lassy.uni.lu/documentation/TR_ LASSY_10_06.pdf">
+		http://democles.lassy.uni.lu/documentation/TR_ LASSY_10_06.pdf</a>
+		</p>
+
+        <h2>26-November-2010: New release of Democles available.</h2>
+        <p>This new version of Democles introduces a mechanism for generating
+        runnable applications on both Android and iPhone platforms by instantiating templates. The templates are described using the 
+        Formal Template language (FTL).<br><br>
+        
+        You can try the sample EP model and generate both Android and iPhone applications from it: 
+        <br><br>
+        <a href="documentation/librarybrowser/">See the documentation</a>.
+        <br><br>
+        </p>
+        
+        <h2>16-June-2009: New release of Democles available.</h2>
+        <p>This new version of Democles introduces support for <b>Platform Bindings</b>. It requires
+        Eclipse 3.4.<br>
+        <br>
+        Other changes are:
+        <ul>
+        <li>Updated Documentation.</li>
+        <li>Better handling of the workspace with regards to the refreshing of resources.</li>
+        <li>Added rename refactoring for domains and bridges.</li>
+        <li>Added wizard for exporting a Democles system as a runnable JAR file.</li>
+        <li>Added wizards to create, import and export platform bindings as well as a GUI allowing to choose which binding should be active.</li>
+        <li>Many other improvements and bug fixes.</li>
+        </ul>
+        We also provide <a href="documentation/browserexample.html">an example project including platform bindings</a>.
+        <br><br>
+        </p>
+            
+        <h2>10-October-2008: New release of Democles available.</h2>        
+        <p>This new version of Democles introduces support for <b>Domain Hierarchies</b>.<br>
+        <br>
+		The basic notion is that of a domain: a self-contained subject matter. In Democles
+		all domains are expressed using a common meta-language called EP.
+		Domains are not sufficient to express a working system since the domains
+		have to interact to realize a software system.<br>
+        <br>		
+		Bridges constitute the main mechanism for effecting this interaction. A
+		bridge is defined over a number of domains. In contrast to domains bridges
+		have external links into the domains over which they are defined. Through these
+		external links events can be propagated from one domain to another domain.
+		Bridges are also responsible for converting data types from one domain to
+		another domain.<br>
+        <br>		
+		We can view the bridge and the underlying domains as a new domain since the
+		union of these structures does not have external links. We can thus view a system
+		model as a hierarchy of domains, with a single top-level domain representing the
+		application. The main purpose of the Democles tool is to provide facilities to
+		model software applications as a domain hierarchy.
+        </p>    
+        
+        
+        <h2>19-August-2008: New Democles release available</h2>        
+        <p>A new version of Democles has been released. Additionally to being compatible
+        with Eclipse 3.3, Democles can now also be used with Eclipse 3.4.
+        </p>
+        
+        <h2>29-May-2008: Democles Website made available</h2>        
+        <p>An early version of the Democles Website is now accessible at
+        <a href="http://democles.lassy.uni.lu/">http://democles.lassy.uni.lu/</a>.
+        </p>
+        
+    </div>
+	</div>
+
+	<div id="footer">&copy; 2003-2011 DASCOM Project at University of Luxembourg<br>
+	  All rights reserved</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4527708-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

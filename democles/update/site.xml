@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://democles.lassy.uni.lu/update">
+      DEMOCLES Update Site
+   </description>
+   <feature url="features/lu.uni.democles_0.9.1.r2699.jar" id="lu.uni.democles" version="0.9.1.r2699"/>
+   <feature url="features/lu.uni.democles_0.9.1.r2736.jar" id="lu.uni.democles" version="0.9.1.r2736"/>
+   <feature url="features/lu.uni.democles_0.9.1.r3147.jar" id="lu.uni.democles" version="0.9.1.r3147"/>
+   <feature url="features/lu.uni.democles_0.9.1.r3664.jar" id="lu.uni.democles" version="0.9.1.r3664"/>
+   <feature url="features/lu.uni.democles_0.9.1.r5005.jar" id="lu.uni.democles" version="0.9.1.r5005"/>
+   <feature url="features/lu.uni.democles_0.9.1.r5654.jar" id="lu.uni.democles" version="0.9.1.r5654"/>
+   <feature url="features/lu.uni.democles_0.9.1.r6701.jar" id="lu.uni.democles" version="0.9.1.r6701"/>
+   <feature url="features/lu.uni.lassy.modeldecomposer_1.0.0.r6533.jar" id="lu.uni.lassy.modeldecomposer" version="1.0.0.r6533"/>
+</site>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Democles</title>
+	<link rel="stylesheet" href="css/reset.css" type="text/css">
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<meta name="keywords" content="democles, declarative, executable, models, modeling, EP-models, software complexity, object-oriented, object-based, eclipse, java, UML, visual programming, coupling">
+</head>
+<body id="page">
+
+	<img id="unilogo" src="images/uni-logo-no-text.png" alt="Uni.lu logo">
+	<img id="lassylogo" src="images/lassy-logo-no-text.png" alt="Lassy logo">
+	<img id="democleslogo" src="images/democles-logo-without-linebreak.png" alt="Democles logotype">
+
+	<div id="navigationbar">
+		<ul id="navigation">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="screenshots.html">Screenshots</a></li>
+			<li id="selected"><a href="documentation.html">Documentation</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="download.html">Download</a></li>
+		</ul>
+    </div>
+
+	<div id="content">
+	<div id="sidebar">
+	
+		<h1>Content</h1>
+		<ul>
+              <li><a href="#aboutepmodel">About the EP Model</a></li>
+              <li><a href="#aboutdemocles">About Democles</a></li>
+              <li><a href="#documentation">Documentation</a></li>
+              <li><a href="#affiliations">Affiliations</a></li>
+		</ul>
+	</div>
+
+    <div id="text">
+              <h1 id="aboutepmodel">About the EP Model</h1>
+          <p>The <abbr title="Event-Property">EP</abbr> model proposes a declarative executable model for
+          engineering object-based systems which achieves executability through a hybrid approach that
+          annotates model elements with OCL code snippets.
+          <h2>Overview</h2>
+            <div style="text-align: center; font-style: italic; font-size: small;">
+            <img src="images/ep-metamodel.png"><br>
+            (Diagram of the EP Metamodel)</div><br>
+          
+            When an EP-system executes, it goes through a number of states. Each state consists of
+            a number of <span style="font-style: italic;">Instances</span>, each belonging to a particular
+            <span style="font-style: italic;">Model</span>.
+            This is similar to a Java program that comprises at run time a number of objects each
+            belonging to one particular class in the system.<br>
+            <br>
+            The passage from one state to the next is triggered by an <span style=
+            "font-style: italic;">Event</span>. An example of an event is the push of a button or a
+            mouse-click. Each event affects some instances in the system. We represent this in an
+            EP-system by an event having children events (via the parent relationship) and by these
+            children events in turn having other child events. This models the propagation of the
+            event through the system.<br>
+            <br>
+            The effect of an event on a property of an instance is modeled via an <span style=
+            "font-style: italic;">impacts</span> link
+            from the event to the property; the link carries a code snippet that expresses the new
+            value of the target property. Generally, the new value depends on other
+            properties. To use these properties in a code snippet, one needs to "feed" the property
+            into the event (via the <span style="font-style: italic;">feeds</span> relationship).
+            Finally the new value of a property may
+            depend on a computed value that depends on several other properties located possibly in
+            other instances. This is represented by properties having
+            other properties as children, and having a code snippet that computes the value of the
+            property in terms of the values of its child properties.<br>
+            <br>
+          
+          For detailed information on the semantics of the EP model, consult the Technical Report:<br><br>
+          <a href="documentation/TR_LASSY_08_03.pdf">TR_LASSY_08_03.pdf</a><br><br>
+          </p>         
+
+          <h1 id="aboutdemocles">About Democles</h1>
+          <p>Democles is a modeling
+          tool for the <a href="#aboutepmodel">EP Model</a>. It is implemented as an Eclipse plugin and provides:
+          <ul>
+            <li>Graphical editing of applications using the EP model,</li>
+            <li>background code generation, and</li>
+            <li>immediate feedback on syntactic validity of models and user-supplied code.</li>
+          </ul>
+          The <a href="screenshots.html">screenshots</a> page provides a visual overview of the tool's user interface.<br><br>
+          The Democles tool can be downloaded from the <a href="download.html">download</a> page.<br><br>
+          </p>         
+        
+          <h1 id="documentation">Documentation</h1>
+          <p>Democles includes Documentation that is accessible from Eclipse's Help system.
+          </p>
+          
+          <h1 id="affiliations">Affiliations</h1>          
+          <p>EP Models and the Democles tool are developed by the members of the
+          <a href="http://se2c.uni.lu/tiki/tiki-index.php?page=DascomOverview"><abbr title="Declarative Approaches to Software Complexity">DASCOM</abbr> Project</a> at the
+          <a href="http://www.uni.lu">University of Luxembourg</a>. The DASCOM Project is the successor to the
+          <a href="http://se2c.uni.lu/tiki/tiki-index.php?page=FactorsOverview">
+          <abbr title="Fundamental Approaches to the Complexity of Object-Oriented Software">FACTORS</abbr> Project</a>
+          and is part of the <a href="http://lassy.uni.lu">Laboratory for Advanced Software Systems</a> at the
+          <a href="http://wwwen.uni.lu/fstc">Faculty of Sciences, Technology and Communication</a>.
+          </p>
+    
+    </div>
+	</div>
+
+	<div id="footer">&copy; 2003-2011 DASCOM Project at University of Luxembourg<br>
+	  All rights reserved</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4527708-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>
