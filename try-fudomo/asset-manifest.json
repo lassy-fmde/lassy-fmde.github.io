@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/try-fudomo/static/css/main.438d1b0a.chunk.css",
-    "main.js": "/try-fudomo/static/js/main.beee115d.chunk.js",
+    "main.js": "/try-fudomo/static/js/main.e8a65a62.chunk.js",
     "runtime-main.js": "/try-fudomo/static/js/runtime-main.dd8da78f.js",
     "static/css/2.3e6277af.chunk.css": "/try-fudomo/static/css/2.3e6277af.chunk.css",
-    "static/js/2.521cfea6.chunk.js": "/try-fudomo/static/js/2.521cfea6.chunk.js",
+    "static/js/2.0b7bbe92.chunk.js": "/try-fudomo/static/js/2.0b7bbe92.chunk.js",
     "apex.js": "/try-fudomo/01664f5c848481ad805e5c0a29627ebd.js",
     "mode-xml.js": "/try-fudomo/01eade92f3c728f412f540d90ac988ee.js",
     "dart.js": "/try-fudomo/0236553edf9c92a7a3c8d970abaae216.js",
@@ -420,16 +420,16 @@
     "mode-groovy.js": "/try-fudomo/fe6efc8bf7b948aa275d980518b286b7.js",
     "theme-gruvbox.js": "/try-fudomo/feff703ce532f20391dfed8199b6971e.js",
     "index.html": "/try-fudomo/index.html",
-    "precache-manifest.dbb80d0031dca6564f1ec8e95c5764b2.js": "/try-fudomo/precache-manifest.dbb80d0031dca6564f1ec8e95c5764b2.js",
+    "precache-manifest.75b97cb2d7d17a6e925afc8db31d50c6.js": "/try-fudomo/precache-manifest.75b97cb2d7d17a6e925afc8db31d50c6.js",
     "service-worker.js": "/try-fudomo/service-worker.js",
-    "static/js/2.521cfea6.chunk.js.LICENSE.txt": "/try-fudomo/static/js/2.521cfea6.chunk.js.LICENSE.txt",
+    "static/js/2.0b7bbe92.chunk.js.LICENSE.txt": "/try-fudomo/static/js/2.0b7bbe92.chunk.js.LICENSE.txt",
     "static/media/index.css": "/try-fudomo/static/media/roboto-latin-900italic.ebf6d164.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.dd8da78f.js",
     "static/css/2.3e6277af.chunk.css",
-    "static/js/2.521cfea6.chunk.js",
+    "static/js/2.0b7bbe92.chunk.js",
     "static/css/main.438d1b0a.chunk.css",
-    "static/js/main.beee115d.chunk.js"
+    "static/js/main.e8a65a62.chunk.js"
   ]
 }
