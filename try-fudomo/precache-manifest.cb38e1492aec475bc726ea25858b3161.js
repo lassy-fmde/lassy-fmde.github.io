@@ -1242,28 +1242,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/try-fudomo/feff703ce532f20391dfed8199b6971e.js"
   },
   {
-    "revision": "e3bf2460325e94eb58fb1693567801a3",
+    "revision": "84baab45e035e34041328d5dfdad4e42",
     "url": "/try-fudomo/index.html"
   },
   {
-    "revision": "48297b921eb706002872",
+    "revision": "2af6e08b846729b1a0db",
     "url": "/try-fudomo/static/css/2.3e6277af.chunk.css"
   },
   {
-    "revision": "cfb9dd6116577e50ff90",
-    "url": "/try-fudomo/static/css/main.49247e24.chunk.css"
+    "revision": "f3b2b253f4bf3165e304",
+    "url": "/try-fudomo/static/css/main.1ec556bd.chunk.css"
   },
   {
-    "revision": "48297b921eb706002872",
-    "url": "/try-fudomo/static/js/2.740360a3.chunk.js"
+    "revision": "2af6e08b846729b1a0db",
+    "url": "/try-fudomo/static/js/2.5fb51bdf.chunk.js"
   },
   {
     "revision": "5a876eaab8071b39505fdfbe8b04d70e",
-    "url": "/try-fudomo/static/js/2.740360a3.chunk.js.LICENSE.txt"
+    "url": "/try-fudomo/static/js/2.5fb51bdf.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cfb9dd6116577e50ff90",
-    "url": "/try-fudomo/static/js/main.00b229f3.chunk.js"
+    "revision": "f3b2b253f4bf3165e304",
+    "url": "/try-fudomo/static/js/main.67363415.chunk.js"
   },
   {
     "revision": "b550f511aae4fa0ed6db",
