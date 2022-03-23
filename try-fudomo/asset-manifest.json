@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/try-fudomo/static/css/main.7bb6c864.chunk.css",
-    "main.js": "/try-fudomo/static/js/main.74576dca.chunk.js",
+    "main.js": "/try-fudomo/static/js/main.6c5ee20d.chunk.js",
     "runtime-main.js": "/try-fudomo/static/js/runtime-main.80cfc8a4.js",
     "static/css/2.f5d1c234.chunk.css": "/try-fudomo/static/css/2.f5d1c234.chunk.css",
-    "static/js/2.38cf0790.chunk.js": "/try-fudomo/static/js/2.38cf0790.chunk.js",
+    "static/js/2.f19611cf.chunk.js": "/try-fudomo/static/js/2.f19611cf.chunk.js",
     "mode-livescript.js": "/try-fudomo/00f32d088488515ac84b1ffe7fc0ec0d.js",
     "ftl.js": "/try-fudomo/024358f71f8096dd8052103dced05dbc.js",
     "mode-soy_template.js": "/try-fudomo/02fae3ae4ea3a1882c730b75d772670e.js",
@@ -420,14 +420,14 @@
     "smarty.js": "/try-fudomo/ff6e85bb753b94d4add40e79a70c2875.js",
     "io.js": "/try-fudomo/ffb285847c77432bb38e9fbf9789d323.js",
     "index.html": "/try-fudomo/index.html",
-    "static/js/2.38cf0790.chunk.js.LICENSE.txt": "/try-fudomo/static/js/2.38cf0790.chunk.js.LICENSE.txt",
+    "static/js/2.f19611cf.chunk.js.LICENSE.txt": "/try-fudomo/static/js/2.f19611cf.chunk.js.LICENSE.txt",
     "static/media/index.css": "/try-fudomo/static/media/roboto-latin-900italic.cb5ad999.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.80cfc8a4.js",
     "static/css/2.f5d1c234.chunk.css",
-    "static/js/2.38cf0790.chunk.js",
+    "static/js/2.f19611cf.chunk.js",
     "static/css/main.7bb6c864.chunk.css",
-    "static/js/main.74576dca.chunk.js"
+    "static/js/main.6c5ee20d.chunk.js"
   ]
 }
