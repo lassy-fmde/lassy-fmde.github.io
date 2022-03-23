@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/lu.uni.lightning.feature_1.0.0.201711081018.jar" id="lu.uni.lightning.feature" version="1.0.0.201711081018">
+   <feature url="features/lu.uni.lightning.feature_1.0.0.202111261506.jar" id="lu.uni.lightning.feature" version="1.0.0.202111261506">
       <category name="lightning"/>
    </feature>
    <category-def name="lightning" label="Lightning Tool"/>
